@@ -1,3 +1,209 @@
+
+// --------------------------------------------------------
+
+    m_toNrCh_equal: m_to_number_char_equal {
+            label = "m_to_number_char_equal";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp SPACE &kp EQUAL &kp SPACE>
+                ;
+      };
+
+    m_toNrCh: m_to_number_char {
+            label = "m_to_number_char";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+              = <&macro_press &mo_ChNr_tog chars_number_m A>
+              , <&macro_tap &kp SPACE>
+              , <&macro_pause_for_release>
+              , <&macro_release &mo_ChNr_tog chars_number_m A>
+              ;
+      };
+
+
+// --------------------------------------------------------
+
+    m_to0_enter: m_chars_number_to0_enter {
+            label = "m_chars_number_to0_enter";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to 0>
+                , <&macro_tap &kp ENTER>
+                ;
+      };
+
+      m_char_n_ENTER: m_chars_number_to0_ctrl_enter {
+            label = "m_chars_number_to0_ctrl_enter";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to 0>
+                , <&macro_tap &kp LC(ENTER)>
+                ;
+      };
+
+// --------------------------------------------------------
+
+   a_shift_dn: m_arrowB_shift_down {
+            label = "m_arrowB_shift_down";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&to arrowB_shift>
+                , <&macro_tap &kt LSHFT>
+                ;
+        };
+
+  a_shift_up: m_arrowB_shift_up {
+            label = "m_arrowB_shift_up";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kt LSHFT>
+                , <&to arrowB>
+                ;
+        };
+
+    a_to0: m_a_to0 {
+            label = "m_a_to0";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kt LSHFT>
+                , <&to 0>
+                ;
+        };
+// --------------------------------------------------------
+
+    a_ctrl_c: m_arrowB_ctrl_c {
+            label = "m_arrowB_ctrl_c";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_tap &kt LSHFT> 
+                , <&to arrowB>
+                , <&macro_press &kp LCTRL>
+                , <&macro_tap &kp C>
+                , <&macro_release &kp LCTRL>
+                ;
+      };
+
+   a_ctrl_v: m_arrowB_ctrl_v {
+            label = "m_arrowB_ctrl_v";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_tap &kt LSHFT> 
+                , <&to arrowB>
+                , <&macro_press &kp LCTRL>
+                , <&macro_tap &kp V>
+                , <&macro_release &kp LCTRL>
+                ;
+      };
+
+     a_ctrl_x: m_arrowB_ctrl_x {
+            label = "m_arrowB_ctrl_x";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>; 
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_tap &kt LSHFT> 
+                , <&to arrowB>
+                , <&macro_press &kp LCTRL>
+                , <&macro_tap &kp X>
+                , <&macro_release &kp LCTRL>
+                ;
+      };
+
+     a_ctrl_z: m_arrowB_ctrl_z {
+            label = "m_arrowB_ctrl_z";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_tap &kt LSHFT> 
+                , <&to arrowB>
+                , <&macro_press &kp LCTRL>
+                , <&macro_tap &kp Z>
+                , <&macro_release &kp LCTRL>
+                ;
+      };
+// --------------------------------------------------------
+    b_ctrl_c: bm_arrowB_ctrl_c {
+            label = "bm_arrowB_ctrl_c";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to arrowB>
+                , <&macro_press &kp LCTRL>
+                , <&macro_tap &kp C>
+                , <&macro_release &kp LCTRL>
+                ;
+      };
+
+   b_ctrl_v: bm_arrowB_ctrl_v {
+            label = "bm_arrowB_ctrl_v";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to arrowB>
+                , <&macro_press &kp LCTRL>
+                , <&macro_tap &kp V>
+                , <&macro_release &kp LCTRL>
+                ;
+      };
+
+     b_ctrl_x: bm_arrowB_ctrl_x {
+            label = "bm_arrowB_ctrl_x";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>; 
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to arrowB>
+                , <&macro_press &kp LCTRL>
+                , <&macro_tap &kp X>
+                , <&macro_release &kp LCTRL>
+                ;
+      };
+
+     b_ctrl_z: bm_arrowB_ctrl_z {
+            label = "bm_arrowB_ctrl_z";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to arrowB>
+                , <&macro_press &kp LCTRL>
+                , <&macro_tap &kp Z>
+                , <&macro_release &kp LCTRL>
+                ;
+      };
+// --------------------------------------------------------
+
   macro_quotes: macro_quotes {
     compatible = "zmk,behavior-macro";
     label = "macro_quotes";
