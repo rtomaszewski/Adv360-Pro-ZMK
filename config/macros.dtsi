@@ -13,6 +13,210 @@
                 ;
       };
 
+    m_toNrCh_equal2: m_to_number_char_equal2 {
+            label = "m_to_number_char_equal2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp SPACE &kp EQUAL &kp EQUAL &kp SPACE>
+                ;
+      };
+
+    m_toNrCh_minus: m_to_number_char_minus {
+            label = "m_to_number_char_minus";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp SPACE &kp MINUS &kp SPACE>
+                ;
+      };
+
+    m_toNrCh_star: m_to_number_char_star {
+            label = "m_to_number_char_star";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp SPACE &kp STAR &kp SPACE>
+                ;
+      };
+
+   m_toNrCh_plus: m_to_number_char_plus {
+            label = "m_to_number_char_plus";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp SPACE &kp PLUS &kp SPACE>
+                ;
+      };
+
+  m_toNrCh_less: m_to_number_char_less_then {
+            label = "m_to_number_char_less_then";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp SPACE &kp LESS_THAN &kp SPACE>
+                ;
+      }; 
+
+    m_toNrCh_more: m_to_number_char_more_then {
+            label = "m_to_number_char_more_then";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp SPACE &kp GREATER_THAN &kp SPACE>
+                ;
+      }; 
+
+    m_toNrCh_slash: m_to_number_char_slash {
+            label = "m_to_number_char_slash";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp SPACE &kp SLASH &kp SPACE>
+                ;
+      }; 
+
+    m_N1: m_to_number_char_N1 {
+            label = "m_to_number_char_N1";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp N1>
+                ;
+      }; 
+
+    m_N2: m_to_number_char_N2 {
+            label = "m_to_number_char_N2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp N2>
+                ;
+      }; 
+
+    m_N3: m_to_number_char_N3 {
+            label = "m_to_number_char_N3";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp N3>
+                ;
+      }; 
+
+    m_N4: m_to_number_char_N4 {
+            label = "m_to_number_char_N4";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp N4>
+                ;
+      }; 
+
+    m_N5: m_to_number_char_N5 {
+            label = "m_to_number_char_N5";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp N5>
+                ;
+      }; 
+
+    m_N6: m_to_number_char_N6 {
+            label = "m_to_number_char_N6";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp N6>
+                ;
+      }; 
+
+    m_N7: m_to_number_char_N7 {
+            label = "m_to_number_char_N7";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp N7>
+                ;
+      }; 
+
+    m_N8: m_to_number_char_N8 {
+            label = "m_to_number_char_N8";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp N8>
+                ;
+      }; 
+
+    m_N9: m_to_number_char_N9 {
+            label = "m_to_number_char_N9";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp N9>
+                ;
+      }; 
+
+    m_N0: m_to_number_char_N0 {
+            label = "m_to_number_char_N0";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp N0>
+                ;
+      }; 
+
     m_toNrCh: m_to_number_char {
             label = "m_to_number_char";
             compatible = "zmk,behavior-macro";

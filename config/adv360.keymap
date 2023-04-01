@@ -211,6 +211,22 @@
             bindings = <&kp UNDER>, <&kp QMARK>;
         }; 
 
+    td_colon: tap_dance_colon {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tap_dance_colon";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp SEMI>, <&kp COLON>;
+        }; 
+
+    td_equals: tap_dance_equals {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tap_dance_equals";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&m_toNrCh_equal>, <&m_toNrCh_equal2>;
+        }; 
+
 
 // --------------------------------------------------------
 
@@ -300,7 +316,9 @@
 #define mo_DD &mo_ChNr     chars_number_m D    
 #define mo_SS &mo_ChNr_tog chars_number_m S
 
-#define mo_KK &mo_kp2 numA K
+//#define mo_KK &mo_kp2 numA K
+#define mo_KK &mo_ChNr     chars_number_m D   
+
 
 #define to_arrow &to arrowB 
 #define to_ChNr &to chars_number 
@@ -318,9 +336,9 @@
 
    chars_number_layer {
       bindings = <
-        &none            &none             &none             &none             to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
+        &none            &none             &none             &kp SPACE         to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &kp N9            &kp N8            &kp N7            &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
-        &key_repeat      &kp UNDER         &kp N6            &kp N5             mo_N4            &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp E              &sl letters &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &kp SEMI        &td_qoute
+        &key_repeat      &kp UNDER         &kp N6            &kp N5             mo_N4            &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp E              &sl letters &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &td_colon       &td_qoute
         &sl letters_cap  &kp COMMA         &kp N3            &kp N2            &kp N1            &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
         &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
@@ -328,10 +346,10 @@
 
    chars_number_m_layer {
       bindings = <
-        &none            &none             &none             &none             to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
-        &none            &to 0             &kp N9            &kp N8            &kp N7            &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &m_toNrCh_equal   &kp EXCL        &kp GRAVE
-        &key_repeat      &kp UNDER         &kp N6            &kp N5             mo_N4            &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp M              &sl letters &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &kp SEMI        &td_qoute
-        &sl letters_cap  &kp COMMA         &kp N3            &kp N2            &kp N1            &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
+        &none            &none             &none             &none             to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &m_toNrCh_star    &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
+        &none            &to 0             &m_N9             &m_N8             &m_N7             &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &m_toNrCh_minus   &td_equals       &kp EXCL        &kp GRAVE
+        &key_repeat      &kp UNDER         &m_N6             &m_N5             &m_N4             &m_N0         &sl letters         &kp ENTER   &none                 &none   &kp M              &sl letters &kp DOLLAR  &kp LPAR         &m_toNrCh_slash   &m_toNrCh_plus   &td_colon       &td_qoute
+        &sl letters_cap  &kp COMMA         &m_N3             &m_N2             &m_N1             &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &m_toNrCh_less    &m_toNrCh_more   &td_under       &sl letters_cap
         &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     };
@@ -361,7 +379,7 @@
       bindings = <
         &none   &none        &none        to_ChNr    &none         &none        &none                                                                              &none      &none        &none            &none        &none             &none        &kp BSPC
         &kp ESC &to 0        &kt LSHFT    &to arrowB &none         &none        &none                                                                              &none      &kp LA(HOME) &kp LS(LA(LEFT)) &kp LS(UP)   &kp LS(LA(RIGHT)) &kp LA(END)  &kp DEL
-        &kp TAB &kp N1       &none        &sk LSHFT  &sk LA(LCTRL) &sl numA     &none             &none       &none                        &none   &kp C           &none      &kp LS(HOME) &kp LS(LEFT)     &kp LS(DOWN) &kp LS(RIGHT)     &kp LS(END)  &kp LS(PG_UP)
+        &kp TAB &kp N1       &none        &sk LSHFT  &sk LA(LCTRL) &sl numA     &none             &none       &none                        &none   &kp N           &none      &kp LS(HOME) &kp LS(LEFT)     &kp LS(DOWN) &kp LS(RIGHT)     &kp LS(END)  &kp LS(PG_UP)
         &kp INS &b_ctrl_z    &b_ctrl_x    &b_ctrl_c  &b_ctrl_v     &none                 &none    &none       &none  &none         &none   &none   &none  &none               &kp LC(HOME) &kp LS(LC(LEFT)) &none        &kp LS(LC(RIGHT)) &kp LC(END)  &kp LS(PG_DN)
         &none   &kp LC(Y)    &none        &none      &sl arrowA                        &kp SPACE &to charsA  &none                &none   &to numA &kp ENTER                              &sl f1_layer     &none        &none             &none        &none
       >;
@@ -501,3 +519,5 @@
 
   };
 };
+
+//O next

@@ -1,0 +1,3 @@
+/home/rado/Adv360-Pro-ZMK
+
+make && ./copy-utf-to-win.sh
