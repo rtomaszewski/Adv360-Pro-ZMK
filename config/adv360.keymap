@@ -21,10 +21,11 @@
 #define space1        12
 #define enter1        13
 #define space2_num_char 14
-#define charsA        15
-#define letters_cap   16
-#define letters       17
-#define f1_layer      18
+#define charsA_m        15
+#define charsA        16
+#define letters_cap   17
+#define letters       18
+#define f1_layer      19
 
 //#define LSW LS(LWIN)
 
@@ -152,6 +153,20 @@
           bindings = <&kp>, <&kp>;
       };
 
+// --------------------------------------------------------
+
+   mod_sk_hold: base_mod_tap_hold {
+            label = "base_mod_tap_hold";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&m_0mod_alt>, <&sk>;
+        };
+
+// --------------------------------------------------------
+
+
       skq: sticky_key_quick_release {
         compatible = "zmk,behavior-sticky-key";
         label = "STICKY_KEY_QUICK_RELEASE";
@@ -160,6 +175,26 @@
         release-after-ms = <400>;
         quick-release;
       };
+
+    sk1: sticky_key_1 {
+        compatible = "zmk,behavior-sticky-key";
+        label = "sticky_key_1";
+        #binding-cells = <1>;
+        release-after-ms = <1000>;
+        bindings = <&kp>;
+        ignore-modifiers;
+    };
+
+    sl1: sticky_layer_1 {
+        compatible = "zmk,behavior-sticky-key";
+        label = "sticky_layer_1";
+        #binding-cells = <1>;
+        release-after-ms = <1000>;
+        bindings = <&mo>;
+        ignore-modifiers;
+        quick-release;
+    };
+
 
 // --------------------------------------------------------
 
@@ -317,7 +352,7 @@
 #define mo_SS &mo_ChNr_tog chars_number_m S
 
 //#define mo_KK &mo_kp2 numA K
-#define mo_KK &mo_ChNr     chars_number_m D   
+#define mo_KK &mo_ChNr     chars_number_m K   
 
 
 #define to_arrow &to arrowB 
@@ -476,16 +511,27 @@
         &none &none        &none        &none        &none                               &none   &none  &none                        &none   &none  &m_char_n_ENTER                       &none        &none        &none        &none        &none
       >;
     };
+ 
+ //this layer doesn't work with the macros 
+  charsA_m_layer {
+      bindings = <
+        &none            &none             &none             &none             &none             &none        &none                                                                               &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
+        &none            &to 0             &sk LA(LG(LSHFT)) &sk LC(LG(LSHFT)) &none             &none        &none                                                                               &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
+        &sk LA(LC(LGUI)) &sk LG(LALT)      &m_charA4         &m_charA5         &kp LA(RIGHT)     &kp LC(RIGHT) &kp LC(ENTER)     &kp O  &none                        &none   &kp O                &none     &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &kp SEMI        &kp SINGLE_QUOTE
+        &m_charA_shift   &m_charA3         &m_charA2         &m_charA1         &sk LA(LC(LSHFT)) &sk LG(LA(LC(LSHFT)))   &none   &none  &none  &none         &none   &none   &none     &none                &kp PIPE    &kp HASH         &kp LESS_THAN     &kp GREATER_THAN &kp QMARK       &none
+        &none            &m_charA_gui      &m_charA_ctrl     &m_charA_alt      &none                                     &none   &none  &none                        &kp DEL &kp BSPC &kp SPACE                         &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
+      >;
+    };
 
   charsA_layer {
       bindings = <
         &none            &none             &none             &none             &none             &none        &none                                                                               &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &sk LA(LG(LSHFT)) &sk LC(LG(LSHFT)) &none             &none        &none                                                                               &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
-        &sk LA(LC(LGUI)) &sk LG(LALT)      &sk LC(LGUI)      &sk LA(LCTRL)     &kp LA(RIGHT)     &kp LC(RIGHT) &kp LC(ENTER)     &none  &none                        &none   &kp ENTER            &none     &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &kp SEMI        &kp SINGLE_QUOTE
+        &sk LA(LC(LGUI)) &sk LG(LALT)      &sk LC(LGUI)      &sk LA(LCTRL)     &kp LA(RIGHT)     &kp LC(RIGHT) &kp LC(ENTER)     &kp P  &none                        &none   &kp P                &none     &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &kp SEMI        &kp SINGLE_QUOTE
         &skq LSHFT       &sk LG(LSHFT)     &sk LC(LSHFT)     &sk LA(LSHFT)     &sk LA(LC(LSHFT)) &sk LG(LA(LC(LSHFT)))   &none   &none  &none  &none         &none   &none   &none     &none                &kp PIPE    &kp HASH         &kp LESS_THAN     &kp GREATER_THAN &kp QMARK       &none
         &none            &skq LGUI         &skq LCTRL        &skq LALT         &none                                     &none   &none  &none                        &kp DEL &kp BSPC &kp SPACE                         &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
-    };
+    };  
 
   letters_capital_layer {
       bindings = <
@@ -520,4 +566,4 @@
   };
 };
 
-//O next
+//Q next
