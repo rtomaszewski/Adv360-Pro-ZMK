@@ -26,6 +26,7 @@
 #define letters_cap   17
 #define letters       18
 #define f1_layer      19
+#define base_mod      20
 
 //#define LSW LS(LWIN)
 
@@ -154,14 +155,96 @@
       };
 
 // --------------------------------------------------------
+// used for modifirs on base layer
+// you still have the convenience of a sticky key, you don't have to keep pressing the key to activate it
+// if you press it it activates the mod, and takes you to new layer where you can use top row for numbers
 
-   mod_sk_hold: base_mod_tap_hold {
-            label = "base_mod_tap_hold";
+   th_sk_mod_lalt: base_mod_tap_hold_lalt {
+            label = "base_mod_tap_hold_lalt";
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            bindings = <&m_0mod_alt>, <&sk>;
+            bindings = <&m_0mod_lalt>, <&skq>;
+        };
+
+    th_sk_modr_lctr: base_mod_tap_hold_lctr {
+            label = "base_mod_tap_hold_lctr";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&m_0mod_lctr>, <&skq>;
+        };
+
+   th_sk_mod_lwin: base_mod_tap_hold_lwin {
+            label = "base_mod_tap_hold_lwin";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&m_0mod_lwin>, <&skq>;
+        };
+
+   th_sk_mod_lshift: base_mod_tap_hold_lshift {
+            label = "base_mod_tap_hold_lshift";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&m_0mod_lshift>, <&skq>;
+        };
+
+//------
+
+   th_sk_mod_ralt: base_mod_tap_hold_ralt {
+            label = "base_mod_tap_hold_ralt";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&m_0mod_ralt>, <&skq>;
+        };
+
+    th_sk_modr_rctr: base_mod_tap_hold_rctr {
+            label = "base_mod_tap_hold_rctr";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&m_0mod_rctr>, <&skq>;
+        };
+
+   th_sk_mod_rwin: base_mod_tap_hold_rwin {
+            label = "base_mod_tap_hold_rwin";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&m_0mod_rwin>, <&skq>;
+        };
+
+   th_sk_mod_rshift: base_mod_tap_hold_rshift {
+            label = "base_mod_tap_hold_rshift";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&m_0mod_rshift>, <&skq>;
+        };
+
+
+// --------------------------------------------------------
+// arrowB_layer
+// 
+
+   ht_arwB_shift2: arrowB_goto_shift2_layer {
+            label = "arrowB_goto_shift2_layer";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&to>;
         };
 
 // --------------------------------------------------------
@@ -254,6 +337,9 @@
             bindings = <&kp SEMI>, <&kp COLON>;
         }; 
 
+// -----------
+// use on chars_number_m_layer
+
     td_equals: tap_dance_equals {
             compatible = "zmk,behavior-tap-dance";
             label = "tap_dance_equals";
@@ -262,6 +348,103 @@
             bindings = <&m_toNrCh_equal>, <&m_toNrCh_equal2>;
         }; 
 
+    td_less: tap_dance_less {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tap_dance_less";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&m_toNrCh_less>, <&m_toNrCh_less2>;
+        }; 
+
+    td_more: tap_dance_more {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tap_dance_more";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&m_toNrCh_more>, <&m_toNrCh_more2>;
+        }; 
+
+// --------------------------------------------------------
+
+   td_n1: tap_dance_base_mod_N1 {
+            label = "tap_dance_base_mod_N1";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N1>, <&kp N6>;
+        };
+
+   td_n2: tap_dance_base_mod_N2 {
+            label = "tap_dance_base_mod_N2";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N2>, <&kp N7>;
+        };
+
+   td_n3: tap_dance_base_mod_N3 {
+            label = "tap_dance_base_mod_N3";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N3>, <&kp N8>;
+        };
+
+   td_n4: tap_dance_base_mod_N4 {
+            label = "tap_dance_base_mod_N4";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N4>, <&kp N9>;
+        };
+
+   td_n5: tap_dance_base_mod_N5 {
+            label = "tap_dance_base_mod_N5";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N5>, <&kp N0>;
+        };
+
+   td_n6: tap_dance_base_mod_N6 {
+            label = "tap_dance_base_mod_N6";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N6>, <&kp N1>;
+        };
+
+   td_n7: tap_dance_base_mod_N7 {
+            label = "tap_dance_base_mod_N7";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N7>, <&kp N2>;
+        };
+
+   td_n8: tap_dance_base_mod_N8 {
+            label = "tap_dance_base_mod_N8";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N8>, <&kp N3>;
+        };
+
+   td_n9: tap_dance_base_mod_N9 {
+            label = "tap_dance_base_mod_N9";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N9>, <&kp N4>;
+        };
+
+   td_n0: tap_dance_base_mod_N0 {
+            label = "tap_dance_base_mod_N0";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N0>, <&kp N5>;
+        };
 
 // --------------------------------------------------------
 
@@ -358,23 +541,40 @@
 #define to_arrow &to arrowB 
 #define to_ChNr &to chars_number 
 
+// --------------------------------------------------------
+
+#define _lalt  &th_sk_mod_lalt 0 LALT 
+#define _lctr  &th_sk_modr_lctr 0 LCTRL
+#define _lwin  &th_sk_mod_lwin 0 LWIN
+#define _lsft  &th_sk_mod_lshift 0 LSHFT 
+
+#define _ralt  &th_sk_mod_ralt 0 RALT 
+#define _rctr  &th_sk_modr_rctr 0 RCTRL
+#define _rwin  &th_sk_mod_rwin 0 RWIN
+#define _rsft  &th_sk_mod_rshift 0 RSHFT 
+
+// --------------------------------------------------------
+
+#define go_arrowB_shift2 &ht_arwB_shift2 arrowB_shift2 arrowB_shift2
+
+// --------------------------------------------------------
 
     default_layer {
       bindings = <
        &kp  EQUAL   hr_N1      hr_N2      to_ChNr   to_arrow    hr_N5  &tog keypad_l                                                                                   &mo mod_l   hr_N6  hr_N7        to_ChNr    hr_N9      hr_N0      &kp BSPC
        &td_esc_tab  hr_Q       hr_W       hr_E      hr_R        hr_T   &none                                                                                           &none       hr_Y   hr_U         hr_I       hr_O       hr_P       &kp DEL
        &kp  TAB     hr_A       mo_SS      mo_DD     mo_FF2      hr_G   &kp LC(RIGHT)               &kp ENTER  &bootloader                &bootloader  &kp Z            &none       hr_H   hr_J         mo_KK      hr_L       hr_COLON   &kp DOUBLE_QUOTES
-    &td_shift_caps  hr_Z       hr_X       hr_C      hr_V        hr_B                    &none      &none      &kp BSPC    &none   &none  &kp PG_UP &none     &none                 hr_N   hr_M         hr_COMMA   hr_DOT     hr_UNDER   &skq RSHFT
-       &mo  2       &skq LWIN  &skq LCTRL &skq LALT &sl arrowA                          mo_SPACE   &sl charsA &kp DEL                    &kp PG_DN &sl numA  mo_ENTER                     &sl f1_layer &skq RALT  &skq RCTRL &skq RWIN  &mo 2
-      >;
+    &td_shift_caps  hr_Z       hr_X       hr_C      hr_V        hr_B                    &none      &none      &kp BSPC    &none   &none  &kp PG_UP &none     &none                 hr_N   hr_M         hr_COMMA   hr_DOT     hr_UNDER   _rsft
+       &mo  2       _lwin      _lctr      _lalt     &sl arrowA                          mo_SPACE   &sl charsA &kp DEL                    &kp PG_DN &sl numA  mo_ENTER                     &sl f1_layer _ralt      _rctr      _rwin      &mo 2
+      >; 
     };
 
    chars_number_layer {
       bindings = <
         &none            &none             &none             &kp SPACE         to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &kp N9            &kp N8            &kp N7            &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
-        &key_repeat      &kp UNDER         &kp N6            &kp N5             mo_N4            &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp E              &sl letters &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &td_colon       &td_qoute
-        &sl letters_cap  &kp COMMA         &kp N3            &kp N2            &kp N1            &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
+        &kp TAB          &kp UNDER         &kp N6            &kp N5             mo_N4            &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp E              &sl letters &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &td_colon       &td_qoute
+        &sl letters_cap  &kp COMMA         &kp N3            &kp N2            &kp N1            &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
         &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     };  
@@ -384,18 +584,20 @@
         &none            &none             &none             &none             to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &m_toNrCh_star    &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &m_N9             &m_N8             &m_N7             &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &m_toNrCh_minus   &td_equals       &kp EXCL        &kp GRAVE
         &key_repeat      &kp UNDER         &m_N6             &m_N5             &m_N4             &m_N0         &sl letters         &kp ENTER   &none                 &none   &kp M              &sl letters &kp DOLLAR  &kp LPAR         &m_toNrCh_slash   &m_toNrCh_plus   &td_colon       &td_qoute
-        &sl letters_cap  &kp COMMA         &m_N3             &m_N2             &m_N1             &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &m_toNrCh_less    &m_toNrCh_more   &td_under       &sl letters_cap
+        &sl letters_cap  &kp COMMA         &m_N3             &m_N2             &m_N1             &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_less          &td_more         &td_under       &sl letters_cap
         &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     };
 
+// &to arrowB_shift2 
+// &sk LA(LCTRL)
     arrowB_layer {
       bindings = <
-        &none   &none        &none         to_ChNr       &none         &none        &none                                                                              &none      &none        &none            &none        &none         &none        &kp BSPC
-        &kp ESC &to 0        &kt LSHFT &to arrowB_shift2 &none         &none        &none                                                                              &none      &kp LA(HOME) &kp LA(LEFT)     &kp UP       &kp LA(RIGHT) &kp LA(END)  &kp DEL
-        &kp TAB &kp N1       &sk LA(LCTRL) &sk LSHFT     &sk LA(LCTRL) &sl numA     &sl letters       &kp ENTER   &none                        &none   &kp A          &sl letters &kp HOME     &kp LEFT         &kp DOWN     &kp RIGHT     &kp END      &kp PG_UP
-        &kp INS &kp LC(Z)    &kp LC(X)    &kp LC(C)      &kp LC(V)     &none                 &none    &none       &kp BSPC  &none      &none   &none   &none  &none               &kp LC(HOME) &kp LC(LEFT)     &none        &kp LC(RIGHT) &kp LC(END)  &kp PG_DN
-        &none   &kp LC(Y)    &none        &none          &sl arrowA                          mo_SPACE &sl charsA  &kp DEL              &none   &sl numA &kp ENTER                              &sl f1_layer     &none        &none         &none        &none
+        &none   &none     &none         to_ChNr        &none              &none        &none                                                                              &none      &none        &none            &none        &none         &none        &kp BSPC
+        &kp ESC &to 0     &none         &none          &none              &none        &none                                                                              &none      &kp LA(HOME) &kp LA(LEFT)     &kp UP       &kp LA(RIGHT) &kp LA(END)  &kp DEL
+        &kp TAB &none     &none         &sk LA(LCTRL)  go_arrowB_shift2   &none        &sl letters       &kp ENTER   &none                        &none   &kp A          &sl letters &kp HOME     &kp LEFT         &kp DOWN     &kp RIGHT     &kp END      &kp PG_UP
+        &kp INS &kp LC(Z) &kp LC(X)     &kp LC(C)      &kp LC(V)          &key_repeat           &none    &none       &kp BSPC  &none      &none   &none   &none  &none               &kp LC(HOME) &kp LC(LEFT)     &none        &kp LC(RIGHT) &kp LC(END)  &kp PG_DN
+        &none   &kp LC(Y) &none         &none          &sl arrowA                               mo_SPACE &sl charsA  &kp DEL              &none   &sl numA &kp ENTER                              &sl f1_layer     &none        &none         &none        &none
       >;
     };
  
@@ -413,8 +615,8 @@
     arrowB_shift2_layer {
       bindings = <
         &none   &none        &none        to_ChNr    &none         &none        &none                                                                              &none      &none        &none            &none        &none             &none        &kp BSPC
-        &kp ESC &to 0        &kt LSHFT    &to arrowB &none         &none        &none                                                                              &none      &kp LA(HOME) &kp LS(LA(LEFT)) &kp LS(UP)   &kp LS(LA(RIGHT)) &kp LA(END)  &kp DEL
-        &kp TAB &kp N1       &none        &sk LSHFT  &sk LA(LCTRL) &sl numA     &none             &none       &none                        &none   &kp N           &none      &kp LS(HOME) &kp LS(LEFT)     &kp LS(DOWN) &kp LS(RIGHT)     &kp LS(END)  &kp LS(PG_UP)
+        &kp ESC &to 0        &none        &to arrowB &none         &none        &none                                                                              &none      &kp LA(HOME) &kp LS(LA(LEFT)) &kp LS(UP)   &kp LS(LA(RIGHT)) &kp LA(END)  &kp DEL
+        &kp TAB &none        &none     &sk LA(LCTRL) &to arrowB    &none        &none             &none       &none                        &none   &kp N           &none      &kp LS(HOME) &kp LS(LEFT)     &kp LS(DOWN) &kp LS(RIGHT)     &kp LS(END)  &kp LS(PG_UP)
         &kp INS &b_ctrl_z    &b_ctrl_x    &b_ctrl_c  &b_ctrl_v     &none                 &none    &none       &none  &none         &none   &none   &none  &none               &kp LC(HOME) &kp LS(LC(LEFT)) &none        &kp LS(LC(RIGHT)) &kp LC(END)  &kp LS(PG_DN)
         &none   &kp LC(Y)    &none        &none      &sl arrowA                        &kp SPACE &to charsA  &none                &none   &to numA &kp ENTER                              &sl f1_layer     &none        &none             &none        &none
       >;
@@ -424,10 +626,10 @@
     arrowB_fkey_layer {
       bindings = <
         &none   &none        &none        &none      &none         &none        &none                                                                              &none      &none        &none            &none        &none             &none        &kp BSPC
-        &kp ESC &to 0        &kt LSHFT    &none      &none         &none        &none                                                                              &none      &kp LA(HOME) &kp LS(LA(LEFT)) &kp UP   &kp LS(LA(RIGHT)) &kp LA(END)  &kp DEL
-        &kp TAB &kp N1      &sk LA(LCTRL) &sk LSHFT  &none         &none        &none             &none       &none                        &none   &kp C           &none      &kp LS(HOME) &kp LEFT         &kp DOWN     &kp RIGHT         &kp LS(END)  &kp PG_UP
+        &kp ESC &to 0        &none        &none      &none         &none        &none                                                                              &none      &kp LA(HOME) &kp LS(LA(LEFT)) &kp UP   &kp LS(LA(RIGHT)) &kp LA(END)  &kp DEL
+        &kp TAB &none        &sk LSHFT &sk LA(LCTRL) &none         &none        &none             &none       &none                        &none   &kp C           &none      &kp LS(HOME) &kp LEFT         &kp DOWN     &kp RIGHT         &kp LS(END)  &kp PG_UP
         &kp INS &none        &none        &none      &none         &none                 &none    &none       &none  &none         &none   &none   &none  &none               &kp LC(HOME) &kp LA(LEFT)     &none        &kp LA(RIGHT)     &kp LC(END)  &kp PG_DN
-        &none   &kp LC(Y)    &none        &none      &tog arrowA                        &kp SPACE &to charsA  &none                &none   &to numA &kp ENTER                              &to f1_layer     &none        &none             &none        &none
+        &none   &none        &none        &none      &none                              &kp SPACE &to charsA  &none                &none   &to numA &kp ENTER                              &to f1_layer     &none        &none             &none        &none
       >;
     }; 
 
@@ -563,7 +765,19 @@
       >;
     };
 
+  base_mod_layer {
+      bindings = <
+       &kp  EQUAL   &td_n1     &td_n2     &td_n3    &td_n4    &td_n5  &none                                                                                           &none    &td_n6     &td_n7      &td_n8      &td_n9      &td_n0      &kp BSPC
+       &kp  ESC     &kp Q      &kp W      &kp E     &kp R     &kp T   &none                                                                                           &none    &kp Y      &kp  U      &kp I       &kp O       &kp P       &kp DEL
+       &kp  TAB     &kp A      &kp S      &kp D     &kp F     &kp G   &kp LC(RIGHT)             &kp ENTER  &none                       &none  &kp Q                   &none    &kp H      &kp  J      &kp K       &kp L       &kp COLON   &kp DOUBLE_QUOTES
+       &kp A        &kp Z      &kp X      &kp C     &kp V     &kp B                    &none    &none      &kp BSPC  &none      &none  &none  &none  &none                     &kp N      &kp  M      &kp COMMA   &kp DOT     &kp UNDER   &kp B
+       &none        &none     &none     &none    &none                             &kp SPACE     &none     &kp DEL                     &none  &none  &kp ENTER                             &none      &none      &none      &none      &none
+      >;
+    };
+
   };
 };
 
-//Q next
+
+
+// r next
