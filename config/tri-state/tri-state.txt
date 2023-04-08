@@ -1,3 +1,6 @@
+docker run -it -v /home/rado/Adv360-Pro-ZMK/firmware:/app/firmware -v /home/rado/Adv360-Pro-ZMK/config:/app/config  --entrypoint bash zmk
+
+
 apt-get install less vim
 
 cd /apt
