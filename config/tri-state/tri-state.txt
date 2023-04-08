@@ -1,0 +1,20 @@
+apt-get install less vim
+
+cd /apt
+
+ cp -v config/zmk,behavior-tri-state.yaml /app/zmk/app/dts/bindings/
+ cp -v config/behavior_tri_state.c zmk/app/src/behaviors/
+
+/app/CMakeLists.txt
+
+target_sources_ifdef(CONFIG_ZMK_BEHAVIOR_TRI_STATE app PRIVATE src/behaviors/behavior_tri_state.c)
+
+/app/Kconfig
+
+DT_COMPAT_ZMK_BEHAVIOR_TRI_STATE := zmk,behavior-tri-state
+
+config ZMK_BEHAVIOR_TRI_STATE
+        bool
+        default $(dt_compat_enabled,$(DT_COMPAT_ZMK_BEHAVIOR_TRI_STATE))
+
+

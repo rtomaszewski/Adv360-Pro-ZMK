@@ -448,6 +448,17 @@
 
 // --------------------------------------------------------
 
+  swap: swapper {
+            compatible = "zmk,behavior-tri-state";
+            label = "SWAPPER";
+            #binding-cells = <0>;
+            bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+            //ignored-key-positions = <1>;
+        };
+
+// --------------------------------------------------------
+
+
 };
 
 
@@ -561,7 +572,7 @@
 
     default_layer {
       bindings = <
-       &kp  EQUAL   hr_N1      hr_N2      to_ChNr   to_arrow    hr_N5  &tog keypad_l                                                                                   &mo mod_l   hr_N6  hr_N7        to_ChNr    hr_N9      hr_N0      &kp BSPC
+       &swap        hr_N1      hr_N2      to_ChNr   to_arrow    hr_N5  &tog keypad_l                                                                                   &mo mod_l   hr_N6  hr_N7        to_ChNr    hr_N9      hr_N0      &kp BSPC
        &td_esc_tab  hr_Q       hr_W       hr_E      hr_R        hr_T   &none                                                                                           &none       hr_Y   hr_U         hr_I       hr_O       hr_P       &kp DEL
        &kp  TAB     hr_A       mo_SS      mo_DD     mo_FF2      hr_G   &kp LC(RIGHT)               &kp ENTER  &bootloader                &bootloader  &kp Z            &none       hr_H   hr_J         mo_KK      hr_L       hr_COLON   &kp DOUBLE_QUOTES
     &td_shift_caps  hr_Z       hr_X       hr_C      hr_V        hr_B                    &none      &none      &kp BSPC    &none   &none  &kp PG_UP &none     &none                 hr_N   hr_M         hr_COMMA   hr_DOT     hr_UNDER   _rsft
@@ -591,10 +602,10 @@
 
 // &to arrowB_shift2 
 // &sk LA(LCTRL)
-    arrowB_layer {
+    arrowB_layer { 
       bindings = <
         &none   &none     &none         to_ChNr        &none              &none        &none                                                                              &none      &none        &none            &none        &none         &none        &kp BSPC
-        &kp ESC &to 0     &none         &none          &none              &none        &none                                                                              &none      &kp LA(HOME) &kp LA(LEFT)     &kp UP       &kp LA(RIGHT) &kp LA(END)  &kp DEL
+    &td_esc_tab &to 0     &none         &none          &none              &none        &none                                                                              &none      &kp LA(HOME) &kp LA(LEFT)     &kp UP       &kp LA(RIGHT) &kp LA(END)  &kp DEL
         &kp TAB &none     &none         &sk LA(LCTRL)  go_arrowB_shift2   &none        &sl letters       &kp ENTER   &none                        &none   &kp A          &sl letters &kp HOME     &kp LEFT         &kp DOWN     &kp RIGHT     &kp END      &kp PG_UP
         &kp INS &kp LC(Z) &kp LC(X)     &kp LC(C)      &kp LC(V)          &key_repeat           &none    &none       &kp BSPC  &none      &none   &none   &none  &none               &kp LC(HOME) &kp LC(LEFT)     &none        &kp LC(RIGHT) &kp LC(END)  &kp PG_DN
         &none   &kp LC(Y) &none         &none          &sl arrowA                               mo_SPACE &sl charsA  &kp DEL              &none   &sl numA &kp ENTER                              &sl f1_layer     &none        &none         &none        &none
