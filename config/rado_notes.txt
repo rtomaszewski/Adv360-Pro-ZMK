@@ -1,0 +1,45 @@
+docker run -it -v /home/rado/Adv360-Pro-ZMK/firmware:/app/firmware -v /home/rado/Adv360-Pro-ZMK/config:/app/config  --entrypoint bash zmk
+
+  apt-get update
+  apt-get install python3-pip
+  python3 -m pip install --user git-filter-repo
+apt-get install less vim
+
+apt install openssh-client  keychain libpam-ssh monkeysphere ssh-askpass
+cp -v /app/config/id_rsa* /root/.ssh/
+
+
+git remote add oldrepo git@github.com:nickconway/zmk.git
+ git remote update
+
+git checkout smart-interrupt
+
+git filter-repo --path app/CMakeLists.txt --path app/Kconfig --path app/dts/bindings/behaviors/zmk,behavior-tri-state.yaml --path app/src/behaviors/behavior_tri_state.c  --force
+
+git format-patch manifest-rev  --stdout > swapp2.patch
+
+ git apply swapp.patch
+
+--
+
+apt-get install less vim
+
+cd /apt
+
+ cp -v config/zmk,behavior-tri-state.yaml /app/zmk/app/dts/bindings/
+ cp -v config/behavior_tri_state.c zmk/app/src/behaviors/
+
+/app/CMakeLists.txt
+
+target_sources_ifdef(CONFIG_ZMK_BEHAVIOR_TRI_STATE app PRIVATE src/behaviors/behavior_tri_state.c)
+
+/app/Kconfig
+
+DT_COMPAT_ZMK_BEHAVIOR_TRI_STATE := zmk,behavior-tri-state
+
+config ZMK_BEHAVIOR_TRI_STATE
+        bool
+        default $(dt_compat_enabled,$(DT_COMPAT_ZMK_BEHAVIOR_TRI_STATE))
+
+
+
