@@ -4,29 +4,31 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/backlight.h>
 
-#define DEFAULT       0
-#define chars_number  1
-#define chars_number_m  2
-#define arrowB        3
-#define arrowB_shift  4  //|=
-#define arrowB_shift2 5
-#define arrowB_fkey   6
+#define DEFAULT           0
+#define strings_l           1
+#define chars_number      2
+#define chars_number_m    3
+#define chars_number_m2   4
+#define arrowB            5
+#define arrowB_shift      6  //|=
+#define arrowB_shift2     7
+#define arrowB_fkey       8
 
-#define keypad_l      7 //default
-#define fn_l          8 //default
-#define mod_l         9 //default
+#define keypad_l          9 //default
+#define fn_l              10 //default
+#define mod_l             11 //default
 
-#define numA          10
-#define arrowA        11
-#define space1        12
-#define enter1        13
-#define space2_num_char 14
-#define charsA_m        15
-#define charsA        16
-#define letters_cap   17
-#define letters       18
-#define f1_layer      19
-#define base_mod      20
+#define numA              12
+#define arrowA            13
+#define space1            14
+#define enter1            15
+#define space2_num_char   16
+#define charsA_m          17
+#define charsA            18
+#define letters_cap       19
+#define letters           20
+#define f1_layer          21
+#define base_mod          22
 
 //#define LSW LS(LWIN)
 
@@ -133,7 +135,7 @@
        bindings = <&mo>, <&kp>;
     }; 
 
-    mo_ChNr_tog: behavior_to_char_nr2 {
+    mo_ChNrtog: behavior_to_char_nr2 {
        label = "behavior_to_char_nr2";
        compatible = "zmk,behavior-hold-tap";
        #binding-cells = <2>;
@@ -364,6 +366,32 @@
             bindings = <&m_toNrCh_more>, <&m_toNrCh_more2>;
         }; 
 
+
+    td_colon_Lm: tap_dance_char_number_colon {
+            label = "tap_dance_char_number_colon";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&m_toNrCh_colon>, <&m_toNrCh_colon2>;
+        }; 
+
+td_qoute_Lm: tap_dance_char_number_qoute {
+            label = "tap_dance_char_number_qoute";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&m_toNrCh_qoute>, <&m_toNrCh_qoute2>;
+        }; 
+
+    td_minus_r: tap_dance_char_num_minus_rust {
+            label = "tap_dance_char_num_minus_rust";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&m_toNrCh_minus>, <&m_toNrCh_r_minus>;
+        }; 
+
+
 // --------------------------------------------------------
 
    td_n1: tap_dance_base_mod_N1 {
@@ -448,13 +476,77 @@
 
 // --------------------------------------------------------
 
-  swap: swapper {
+// window switching in windows
+  t3_alt_tab: swapper_alt_tab {
             compatible = "zmk,behavior-tri-state";
-            label = "SWAPPER";
+            label = "swapper_alt_tab";
             #binding-cells = <0>;
             bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             ignored-key-positions = <46 65>;  // left shfit and right shift
         };
+
+// you can use this to move the currsor forward and using a single key only
+// its kind of similar how the sticky key works, as long as you keep pressing it
+// it will output the alt+arrow key and it is disabled by any other key
+// "smart" key combination
+
+  t3_alt_arrow: swapper_alt_arrow {
+            label = "swapper_alt_arrow";
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&kt LALT>, <&kp RIGHT>, <&kt LALT>;
+           // ignored-key-positions = <46 65>;  // left shfit and right shift
+        };
+
+  t3_mod1: swapper_mod1 {
+            label = "swapper_mod1";
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&to charsA_m>, <&sk LA(LCTRL)>, <&kp N1>;
+           // ignored-key-positions = <46 65>;  // left shfit and right shift
+        };
+
+  t3_mod2: swapper_mod2 {
+            label = "swapper_mod2";
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&to charsA_m>, <&skq LALT>, <&kp N2>;
+           // ignored-key-positions = <46 65>;  // left shfit and right shift
+        };
+
+  t3_mod3: swapper_mod3 {
+            label = "swapper_mod3";
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&skq LALT>, <&to charsA_m>, <&kp N3>;
+           // ignored-key-positions = <46 65>;  // left shfit and right shift
+        };
+
+  t3_mod4: swapper_mod4 {
+            label = "swapper_mod4";
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&to charsA_m>, <&kp LALT>, <&kp N4>;
+           // ignored-key-positions = <46 65>;  // left shfit and right shift
+        };
+
+  t3_mod5: swapper_mod5 {
+            label = "swapper_mod5";
+            compatible = "zmk,b!!ehavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&to charsA>, <&kp A>, <&kp N5>;
+           // ignored-key-positions = <46 65>;  // left shfit and right shift
+            ignored-layers = <0 18>;
+        };
+
+    t3_mod6: swapper_mod6 {
+            label = "swapper_mod6";
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&kp B>, <&kp A>, <&kp N6>;
+           // ignored-key-positions = <46 65>;  // left shfit and right shift
+        };
+
 
 // --------------------------------------------------------
 
@@ -489,7 +581,7 @@
 
 #define hr_Q &lh_pht1a LSFT Q
 #define hr_W &lh_pht1a LSFT W
-#define hr_E &lh_pht1a LSFT E
+//#define hr_E &lh_pht1a LSFT E
 #define hr_R &lh_pht1a LSFT R
 #define hr_T &lh_pht1a LSFT T
 
@@ -541,16 +633,26 @@
 //#define mo_N4 &mo_kp2 arrowA N4
 #define mo_N4 &mo_kp2 arrowB_fkey N4
 
+//string shortcuts
+#define mo_E &mo_kp2 strings_l E
+
 //#define mo_DD &mo_kp2 charsA D    
-#define mo_DD &mo_ChNr     chars_number_m D    
-#define mo_SS &mo_ChNr_tog chars_number_m S
+#define   mo_DD &mo_ChNr     chars_number_m D    
+
+//#define mo_SS &mo_ChNrtog  chars_number_m S
+#define   mo_SS &mo_ChNr     chars_number_m2 S
 
 //#define mo_KK &mo_kp2 numA K
-#define mo_KK &mo_ChNr     chars_number_m K   
+#define   mo_KK &mo_ChNr     chars_number_m K   
 
+//allows to type: \n or \d
+#define mo_N5    &mo_ChNr     chars_number_m N5
+#define mo_N6    &mo_ChNr     chars_number_m2 N6
+#define mo_SLASH &mo_ChNr     chars_number_m SLASH
 
 #define to_arrow &to arrowB 
 #define to_ChNr &to chars_number 
+
 
 // --------------------------------------------------------
 
@@ -572,33 +674,70 @@
 
     default_layer {
       bindings = <
-       &swap        hr_N1      hr_N2      to_ChNr   to_arrow    hr_N5  &tog keypad_l                                                                                   &mo mod_l   hr_N6  hr_N7        to_ChNr    hr_N9      hr_N0      &kp BSPC
-       &td_esc_tab  hr_Q       hr_W       hr_E      hr_R        hr_T   &none                                                                                           &none       hr_Y   hr_U         hr_I       hr_O       hr_P       &kp DEL
+       &t3_alt_tab  hr_N1      hr_N2      to_ChNr   to_arrow    hr_N5  &tog keypad_l                                                                                   &mo mod_l   hr_N6  hr_N7        to_ChNr    hr_N9      hr_N0      &kp BSPC
+       &td_esc_tab  hr_Q       hr_W       mo_E      hr_R        hr_T   &t3_alt_arrow                                                                                   &none       hr_Y   hr_U         hr_I       hr_O       hr_P       &kp DEL
        &kp  TAB     hr_A       mo_SS      mo_DD     mo_FF2      hr_G   &kp LC(RIGHT)               &kp ENTER  &bootloader                &bootloader  &kp Z            &none       hr_H   hr_J         mo_KK      hr_L       hr_COLON   &kp DOUBLE_QUOTES
     &td_shift_caps  hr_Z       hr_X       hr_C      hr_V        hr_B                    &none      &none      &kp BSPC    &none   &none  &kp PG_UP &none     &none                 hr_N   hr_M         hr_COMMA   hr_DOT     hr_UNDER   _rsft
-       &mo  2       _lwin      _lctr      _lalt     &sl arrowA                          mo_SPACE   &sl charsA &kp DEL                    &kp PG_DN &sl numA  mo_ENTER                     &sl f1_layer _ralt      _rctr      _rwin      &mo 2
+       &mo  2       _lwin      _lctr      _lalt     &sl arrowA                        mo_SPACE   &sl charsA_m &kp DEL                    &kp PG_DN &sl numA  mo_ENTER                     &sl f1_layer _ralt      _rctr      _rwin      &mo 2
       >; 
+    };
+
+// h  : https://
+// d  : doesn't
+
+    strings_layer {
+      bindings = <
+        &none &none        &none        &none        &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &none
+        &none &none        &none        &none        &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &none
+        &none &none        &m_d_doesnt  &none        &none        &none        &none            &none  &none                        &none   &none                 &none      &m_h_https   &none        &none        &none        &none        &none
+        &none &none        &none        &none        &none        &none                 &none   &none  &none  &none         &none   &none   &none  &none                     &none        &none        &none        &none        &none        &none
+        &none &none        &none        &none        &none                              &none   &none  &none                        &none   &none  &none                                  &none        &none        &none        &none        &none
+      >;
     };
 
    chars_number_layer {
       bindings = <
         &none            &none             &none             &kp SPACE         to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &kp N9            &kp N8            &kp N7            &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
-        &kp TAB          &kp UNDER         &kp N6            &kp N5             mo_N4            &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp E              &sl letters &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &td_colon       &td_qoute
+        &kp TAB          &kp UNDER         mo_N6             mo_N5             mo_N4             &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp E              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          &kp PLUS         &td_colon       &td_qoute
         &sl letters_cap  &kp COMMA         &kp N3            &kp N2            &kp N1            &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
         &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     };  
 
+//on default layer use to type:
+// ' / ' or ' + ' or '<end>;<enter>' or ' == ' or \n or \d or ' > ' or ' >= ' ... 
+// if macro is used often it changes to chars_number layer to contine
+// -  : ' - '<new_layer>| 
+// -- : ' -> |'
+// spc: 'alt+right space|'
+// '  : '''
+// "  : """
+// 
+//TODO:
+//  '<end> ', example: "string|" -> "string" |
+
    chars_number_m_layer {
       bindings = <
         &none            &none             &none             &none             to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &m_toNrCh_star    &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
-        &none            &to 0             &m_N9             &m_N8             &m_N7             &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &m_toNrCh_minus   &td_equals       &kp EXCL        &kp GRAVE
-        &key_repeat      &kp UNDER         &m_N6             &m_N5             &m_N4             &m_N0         &sl letters         &kp ENTER   &none                 &none   &kp M              &sl letters &kp DOLLAR  &kp LPAR         &m_toNrCh_slash   &m_toNrCh_plus   &td_colon       &td_qoute
-        &sl letters_cap  &kp COMMA         &m_N3             &m_N2             &m_N1             &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_less          &td_more         &td_under       &sl letters_cap
-        &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
+        &none            &to 0             &m_N9             &m_N8             &m_N7             &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &td_minus_r       &td_equals       &kp EXCL        &kp GRAVE
+        &key_repeat      &kp UNDER         &m_N6             &m_N5_d           &m_N4             &m_N0         &sl letters         &kp ENTER   &none                 &none   &kp M              &sl letters &kp DOLLAR  &m_toNrCh_lpar   &m_toNrCh_slash   &m_toNrCh_plus   &td_colon_Lm    &td_qoute_Lm
+        &sl letters_cap  &kp COMMA         &m_N3             &m_N2             &m_N1             &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none              &m_toNrCh_pipe &kp HASH         &td_less          &td_more         &td_under       &sl letters_cap
+        &none            &none             &none             &none             &sl arrowA                        &m_toNrCh_space   &sl letters &none              &kp DEL &sl letters &kp ENTER                         &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     };
+
+//on base layer helps to type the chars sequnce that requries movements like: ^\
+// LS \^ or \% or in general \<char> or ^<char>
+   chars_number_m2_layer {
+      bindings = <
+        &none            &none             &none             &kp SPACE         to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
+        &none            &to 0             &kp N9            &kp N8            &kp N7            &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
+        &kp TAB          &kp UNDER         &none             &kp BACKSLASH     &kp CARET         &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp R              &sl letters &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &td_colon       &td_qoute
+        &sl letters_cap  &kp COMMA         &kp N3            &kp N2            &kp N1            &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
+        &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
+      >;
+    }; 
 
 // &to arrowB_shift2 
 // &sk LA(LCTRL)
@@ -647,7 +786,7 @@
     keypad {
       bindings = <
         &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &trans                                                                       &mo 3 &kp N6 &kp KP_NUM &kp KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY &kp MINUS
-        &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T  &none                                                                        &none &kp Y  &kp KP_N7  &kp KP_N8    &kp KP_N9     &kp KP_MINUS    &kp BSLH
+        &kp TAB   &to 0     &kp W    &kp E    &kp R      &kp T  &none                                                                        &none &kp Y  &kp KP_N7  &kp KP_N8    &kp KP_N9     &kp KP_MINUS    &kp BSLH
         &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none           &kp LCTRL &kp LALT             &kp LGUI  &kp D               &none &kp H  &kp KP_N4  &kp KP_N5    &kp KP_N6     &kp KP_PLUS     &kp SQT
         &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B         &none    &none     &kp HOME &none &none &kp PG_UP &none     &none           &kp N  &kp KP_N1  &kp KP_N2    &kp KP_N3     &kp KP_ENTER    &kp RSHFT
         &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END              &kp PG_DN &kp ENTER &kp KP_N0              &kp UP     &kp DOWN     &kp KP_DOT    &kp RBKT        &mo 2
@@ -657,7 +796,7 @@
     fn {
       bindings = <
         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &tog 1                                                       &mo 3 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-        &trans &trans &trans &trans &trans &trans  &none                                                       &none &trans &trans &trans &trans  &trans  &trans
+        &trans &to 0  &trans &trans &trans &trans  &none                                                       &none &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans &trans  &none        &trans &trans             &trans &trans        &none &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans &trans        &none  &none  &trans &none &none &trans &none  &none        &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans               &trans &trans &trans             &trans &trans &trans              &trans &trans &trans  &trans  &trans
@@ -667,7 +806,7 @@
     mod {
       bindings = <
         &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                                                          &trans                 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
-        &none &none        &none        &none        &none        &none        &bootloader                                                                                                    &bootloader            &none        &none        &none        &none        &none        &none
+        &none &to 0        &none        &none        &none        &none        &bootloader                                                                                                    &bootloader            &none        &none        &none        &none        &none        &none
         &none &none        &none        &none        &none        &none        &rgb_ug RGB_MEFS_CMD 5                 &bt BT_CLR &bt BT_CLR             &bt BT_CLR &bt BT_CLR                 &rgb_ug RGB_MEFS_CMD 5 &none        &none        &none        &none        &none        &none
         &none &none        &none        &none        &none        &none                               &none           &none      &none      &none &none &none      &none      &none                                  &none        &none        &none        &none        &none        &none
         &none &none        &none        &bl BL_INC   &bl BL_DEC                                       &rgb_ug RGB_TOG &bl BL_TOG &none                  &none      &bl BL_TOG &rgb_ug RGB_TOG                                     &bl BL_INC   &bl BL_DEC   &none        &none        &none
@@ -698,7 +837,7 @@
     space1_layer {
       bindings = <
         &none &none        &none        &none        &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &kp LC(BSPC)
-        &none &none        &none        &kp UP       &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &kp LC(DEL)
+        &none &none        &none        &kp UP      &t3_alt_arrow &none        &none                                                                              &none      &none        &none        &none        &none        &none        &kp LC(DEL)
         &none &none        &kp LEFT     &kp DOWN     &kp LC(RIGHT) &kp LA(RIGHT) &none           &none  &none                        &none   &kp H                &none      &none        &none        &none        &none        &none        &none 
         &none &none        &none        &none        &kp BSPC     &kp DEL                &none   &none  &none  &none         &none   &none   &none  &none                    &none        &none        &none        &none        &none        &none
         &none &none        &none        &none        &none                               &none   &none  &none                        &none   &none  &kp LC(ENTER)                         &none        &none        &none        &none        &none
@@ -730,16 +869,16 @@
       bindings = <
         &none            &none             &none             &none             &none             &none        &none                                                                               &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &sk LA(LG(LSHFT)) &sk LC(LG(LSHFT)) &none             &none        &none                                                                               &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
-        &sk LA(LC(LGUI)) &sk LG(LALT)      &m_charA4         &m_charA5         &kp LA(RIGHT)     &kp LC(RIGHT) &kp LC(ENTER)     &kp O  &none                        &none   &kp O                &none     &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &kp SEMI        &kp SINGLE_QUOTE
-        &m_charA_shift   &m_charA3         &m_charA2         &m_charA1         &sk LA(LC(LSHFT)) &sk LG(LA(LC(LSHFT)))   &none   &none  &none  &none         &none   &none   &none     &none                &kp PIPE    &kp HASH         &kp LESS_THAN     &kp GREATER_THAN &kp QMARK       &none
-        &none            &m_charA_gui      &m_charA_ctrl     &m_charA_alt      &none                                     &none   &none  &none                        &kp DEL &kp BSPC &kp SPACE                         &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
+        &sk LA(LC(LGUI)) &sk LG(LALT)      &m_charA4         &t3_mod5          &kp LA(RIGHT)     &kp LC(RIGHT) &kp LC(ENTER)     &kp O  &none                        &none   &kp O                &none     &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &kp SEMI        &kp SINGLE_QUOTE
+        &m_charA_shift   &m_charA3         &m_charA2         &t3_mod6          &sk LA(LC(LSHFT)) &sk LG(LA(LC(LSHFT)))   &none   &none  &none  &none         &none   &none   &none     &none                &kp PIPE    &kp HASH         &kp LESS_THAN     &kp GREATER_THAN &kp QMARK       &none
+        &none            &m_charA_gui      &m_charA_ctrl     &t3_mod4          &none                                     &none   &none  &none                        &kp DEL &kp BSPC &kp SPACE                         &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     };
 
   charsA_layer {
       bindings = <
         &none            &none             &none             &none             &none             &none        &none                                                                               &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
-        &none            &to 0             &sk LA(LG(LSHFT)) &sk LC(LG(LSHFT)) &none             &none        &none                                                                               &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
+        &none            &to 0             &sk LA(LG(LSHFT)) &sk LC(LG(LSHFT)) &t3_alt_arrow     &none        &none                                                                               &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
         &sk LA(LC(LGUI)) &sk LG(LALT)      &sk LC(LGUI)      &sk LA(LCTRL)     &kp LA(RIGHT)     &kp LC(RIGHT) &kp LC(ENTER)     &kp P  &none                        &none   &kp P                &none     &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &kp SEMI        &kp SINGLE_QUOTE
         &skq LSHFT       &sk LG(LSHFT)     &sk LC(LSHFT)     &sk LA(LSHFT)     &sk LA(LC(LSHFT)) &sk LG(LA(LC(LSHFT)))   &none   &none  &none  &none         &none   &none   &none     &none                &kp PIPE    &kp HASH         &kp LESS_THAN     &kp GREATER_THAN &kp QMARK       &none
         &none            &skq LGUI         &skq LCTRL        &skq LALT         &none                                     &none   &none  &none                        &kp DEL &kp BSPC &kp SPACE                         &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
@@ -758,7 +897,7 @@
 
   letters_layer {
       bindings = <
-        &none &none    &none    &none    &none    &none    &none                                                                                        &none      &none    &none    &none     &none    &none       &none
+        &none &to 0    &none    &none    &none    &none    &none                                                                                        &none      &none    &none    &none     &none    &none       &none
         &none &kp Q    &kp W    &kp E    &kp R    &kp T    &none                                                                                        &none      &kp Y    &kp U    &kp I     &kp O    &kp P       &none
         &none &kp A    &kp S    &kp D    &kp F    &kp G    &none                  &none       &none                        &none   &kp L                &none      &kp H    &kp J    &kp K     &kp L    &kp COLON   &none
         &none &kp Z    &kp X    &kp C    &kp V    &kp B                &none      &none       &none  &none         &none   &none   &none  &none                    &kp N    &kp M    &kp COMMA &kp DOT  &kp UNDER   &none
@@ -776,6 +915,11 @@
       >;
     };
 
+// when on layer 0 it allows you to type:
+// mod+leter, mod+leter
+// mod+number
+// mod+numer, mod+number
+
   base_mod_layer {
       bindings = <
        &kp  EQUAL   &td_n1     &td_n2     &td_n3    &td_n4    &td_n5  &none                                                                                           &none    &td_n6     &td_n7      &td_n8      &td_n9      &td_n0      &kp BSPC
@@ -791,4 +935,4 @@
 
 
 
-// r next
+// S next

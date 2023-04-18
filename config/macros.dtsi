@@ -1,5 +1,28 @@
 // --------------------------------------------------------
 
+// string: 'https://'
+m_h_https: m_base_https  {
+            label = "m_base_https";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+              = <&macro_tap &kp H &kp T &kp T &kp P &kp S &kp COLON &kp SLASH &kp SLASH>;
+      };
+
+m_d_doesnt: m_base_doesnt  {
+            label = "m_base_doesnt";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+              = <&macro_tap &kp D &kp O &kp E &kp S &kp N &kp SINGLE_QUOTE &kp T>;
+      };
+
+// --------------------------------------------------------
+
 m_0mod_lalt: m_base_mod_tap_hold_lalt  {
             label = "m_base_mod_tap_hold_lalt";
             compatible = "zmk,behavior-macro";
@@ -255,6 +278,20 @@ m_charA_shift: m_to_charsA_shift {
                 ;
       };
 
+//used in Rust at the end of function
+// fn name(args) -> String
+
+    m_toNrCh_r_minus: m_to_number_char_rust_minus {
+            label = "m_to_number_char_rust_minus";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <5>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_tap &kp END &kp SPACE &kp MINUS &kp GREATER_THAN &kp SPACE>
+                ;
+      };
+
     m_toNrCh_star: m_to_number_char_star {
             label = "m_to_number_char_star";
             compatible = "zmk,behavior-macro";
@@ -340,6 +377,99 @@ m_charA_shift: m_to_charsA_shift {
                 ;
       }; 
 
+    m_toNrCh_pipe: m_to_number_char_pipe {
+            label = "m_to_number_char_pipe";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_tap &kp BACKSLASH &kp N>
+                ;
+      }; 
+
+//helps in "c" language to type the semicolon and move to new line
+//often currsor is in a middle of some string, example: myarray[1|]
+
+m_toNrCh_colon: m_to_number_char_colon {
+            label = "m_to_number_char_colon";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to DEFAULT>
+                , <&macro_tap &kp END &kp SEMI &kp ENTER>
+                ;
+      }; 
+
+
+m_toNrCh_colon2: m_to_number_char_colon2 {
+            label = "m_to_number_char_colon2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to DEFAULT>
+                , <&macro_tap &kp END &kp SEMI &kp DOWN>
+                ;
+      }; 
+
+
+// in rust or other languages type: '().' vvv
+
+m_toNrCh_lpar: m_to_number_char_lpar {
+            label = "m_to_number_char_lpar";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+                = <&macro_tap &kp LPAR &kp RPAR &kp DOT>
+                ;
+      }; 
+
+
+// used to move the currsor to the end of line and press space
+// example: "text|" -> "text" |
+m_toNrCh_space: m_to_number_char_space {
+            label = "m_to_number_char_space";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp RIGHT>
+                , <&macro_release &kp LALT>
+                , <&macro_tap &kp SPACE>
+                ;
+      }; 
+
+m_toNrCh_qoute: m_to_number_char_qoute {
+            label = "m_to_number_char_qoute";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+                = <&macro_tap &kp SINGLE_QUOTE &kp SINGLE_QUOTE &kp SINGLE_QUOTE>
+                ;
+      }; 
+
+m_toNrCh_qoute2: m_to_number_char_quote2 {
+            label = "m_to_number_char_quote2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+                = <&macro_tap &kp DOUBLE_QUOTES &kp DOUBLE_QUOTES &kp DOUBLE_QUOTES>
+                ;
+      }; 
+
+
     m_N1: m_to_number_char_N1 {
             label = "m_to_number_char_N1";
             compatible = "zmk,behavior-macro";
@@ -388,15 +518,15 @@ m_charA_shift: m_to_charsA_shift {
                 ;
       }; 
 
-    m_N5: m_to_number_char_N5 {
+    m_N5_d: m_to_number_char_N5 {
             label = "m_to_number_char_N5";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <10>;
             tap-ms = <10>;
             bindings
-                = <&to chars_number>
-                , <&macro_tap &kp N5>
+                = <&kp BACKSLASH>
+                , <&kp D>
                 ;
       }; 
 
@@ -407,7 +537,7 @@ m_charA_shift: m_to_charsA_shift {
             wait-ms = <10>;
             tap-ms = <10>;
             bindings
-                = <&to chars_number>
+                = <&mo chars_number>
                 , <&macro_tap &kp N6>
                 ;
       }; 
@@ -460,19 +590,20 @@ m_charA_shift: m_to_charsA_shift {
                 ;
       }; 
 
-    m_toNrCh: m_to_number_char {
-            label = "m_to_number_char";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
-            bindings
-              = <&macro_press &mo_ChNr_tog chars_number_m A>
-              , <&macro_tap &kp SPACE>
-              , <&macro_pause_for_release>
-              , <&macro_release &mo_ChNr_tog chars_number_m A>
-              ;
-      };
+
+//    m_toNrCh: m_to_number_char {
+//            label = "m_to_number_char";
+//            compatible = "zmk,behavior-macro";
+//            #binding-cells = <0>;
+//            wait-ms = <10>;
+//            tap-ms = <10>;
+//            bindings
+//              = <&macro_press &mo_ChNr_tog chars_number_m A>
+//              , <&macro_tap &kp SPACE>
+//              , <&macro_pause_for_release>
+//              , <&macro_release &mo_ChNr_tog chars_number_m A>
+//              ;
+//      };
 
 
 // --------------------------------------------------------
