@@ -518,25 +518,28 @@ td_qoute_Lm: tap_dance_char_number_qoute {
             label = "swapper_mod3";
             compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
-            bindings = <&skq LALT>, <&to charsA_m>, <&kp N3>;
-           // ignored-key-positions = <46 65>;  // left shfit and right shift
+            bindings = <&to charsA>, <&sk LA(LSHFT)>, <&kp N3>;
+            ignored-key-positions = <8 9 10 11 12   22 23 24 25 26  40 41 42 43 44   60 61 62 63 64>;
+            ignored-layers = <0 charsA_m charsA>;
         };
 
   t3_mod4: swapper_mod4 {
             label = "swapper_mod4";
             compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
-            bindings = <&to charsA_m>, <&kp LALT>, <&kp N4>;
-           // ignored-key-positions = <46 65>;  // left shfit and right shift
+            //bindings = <&skq LALT>, <&sl charsA>, <&kp N4>;         //this combination doesn't work;
+            bindings = <&none>, <&sl charsA>, <&sk LA(LSHFT)>;
+           // ignored-key-positions = <46 65>;  
+            ignored-layers = <charsA>;
         };
 
   t3_mod5: swapper_mod5 {
             label = "swapper_mod5";
-            compatible = "zmk,b!!ehavior-tri-state";
+            compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
             bindings = <&to charsA>, <&kp A>, <&kp N5>;
            // ignored-key-positions = <46 65>;  // left shfit and right shift
-            ignored-layers = <0 18>;
+            ignored-layers = <charsA>;
         };
 
     t3_mod6: swapper_mod6 {
@@ -596,7 +599,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 
 #define hr_Y &lh_pht1b LSFT Y
 #define hr_U &lh_pht1b LSFT U
-#define hr_I &lh_pht1b LSFT I
+//#define hr_I &lh_pht1b LSFT I
 #define hr_O &lh_pht1b LSFT O
 #define hr_P &lh_pht1b LSFT P
 
@@ -635,6 +638,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 
 //string shortcuts
 #define mo_E &mo_kp2 strings_l E
+#define mo_I &mo_kp2 strings_l I
 
 //#define mo_DD &mo_kp2 charsA D    
 #define   mo_DD &mo_ChNr     chars_number_m D    
@@ -675,10 +679,10 @@ td_qoute_Lm: tap_dance_char_number_qoute {
     default_layer {
       bindings = <
        &t3_alt_tab  hr_N1      hr_N2      to_ChNr   to_arrow    hr_N5  &tog keypad_l                                                                                   &mo mod_l   hr_N6  hr_N7        to_ChNr    hr_N9      hr_N0      &kp BSPC
-       &td_esc_tab  hr_Q       hr_W       mo_E      hr_R        hr_T   &t3_alt_arrow                                                                                   &none       hr_Y   hr_U         hr_I       hr_O       hr_P       &kp DEL
+       &td_esc_tab  hr_Q       hr_W       mo_E      hr_R        hr_T   &t3_alt_arrow                                                                                   &none       hr_Y   hr_U         mo_I       hr_O       hr_P       &kp DEL
        &kp  TAB     hr_A       mo_SS      mo_DD     mo_FF2      hr_G   &kp LC(RIGHT)               &kp ENTER  &bootloader                &bootloader  &kp Z            &none       hr_H   hr_J         mo_KK      hr_L       hr_COLON   &kp DOUBLE_QUOTES
     &td_shift_caps  hr_Z       hr_X       hr_C      hr_V        hr_B                    &none      &none      &kp BSPC    &none   &none  &kp PG_UP &none     &none                 hr_N   hr_M         hr_COMMA   hr_DOT     hr_UNDER   _rsft
-       &mo  2       _lwin      _lctr      _lalt     &sl arrowA                        mo_SPACE   &sl charsA_m &kp DEL                    &kp PG_DN &sl numA  mo_ENTER                     &sl f1_layer _ralt      _rctr      _rwin      &mo 2
+       &mo  2       _lwin      _lctr      _lalt     &sl arrowA                        mo_SPACE   &sl charsA   &kp DEL                    &kp PG_DN &sl numA  mo_ENTER                     &sl f1_layer _ralt      _rctr      _rwin      &mo 2
       >; 
     };
 
@@ -688,8 +692,8 @@ td_qoute_Lm: tap_dance_char_number_qoute {
     strings_layer {
       bindings = <
         &none &none        &none        &none        &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &none
-        &none &none        &none        &none        &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &none
-        &none &none        &m_d_doesnt  &none        &none        &none        &none            &none  &none                        &none   &none                 &none      &m_h_https   &none        &none        &none        &none        &none
+        &none &to 0        &none        &none        &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &none
+        &none &none        &none        &m_d_doesnt  &none        &none        &none            &none  &none                        &none   &kp S                 &none      &m_h_https   &none        &none        &none        &none        &none
         &none &none        &none        &none        &none        &none                 &none   &none  &none  &none         &none   &none   &none  &none                     &none        &none        &none        &none        &none        &none
         &none &none        &none        &none        &none                              &none   &none  &none                        &none   &none  &none                                  &none        &none        &none        &none        &none
       >;
@@ -865,12 +869,13 @@ td_qoute_Lm: tap_dance_char_number_qoute {
     };
  
  //this layer doesn't work with the macros 
+// doesn't work with the "swapper"/tri-state sequences that use sk an sl behaviours
   charsA_m_layer {
       bindings = <
         &none            &none             &none             &none             &none             &none        &none                                                                               &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &sk LA(LG(LSHFT)) &sk LC(LG(LSHFT)) &none             &none        &none                                                                               &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
         &sk LA(LC(LGUI)) &sk LG(LALT)      &m_charA4         &t3_mod5          &kp LA(RIGHT)     &kp LC(RIGHT) &kp LC(ENTER)     &kp O  &none                        &none   &kp O                &none     &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &kp SEMI        &kp SINGLE_QUOTE
-        &m_charA_shift   &m_charA3         &m_charA2         &t3_mod6          &sk LA(LC(LSHFT)) &sk LG(LA(LC(LSHFT)))   &none   &none  &none  &none         &none   &none   &none     &none                &kp PIPE    &kp HASH         &kp LESS_THAN     &kp GREATER_THAN &kp QMARK       &none
+        &m_charA_shift   &m_charA3         &m_charA2         &t3_mod3          &sk LA(LC(LSHFT)) &sk LG(LA(LC(LSHFT)))   &none   &none  &none  &none         &none   &none   &none     &none                &kp PIPE    &kp HASH         &kp LESS_THAN     &kp GREATER_THAN &kp QMARK       &none
         &none            &m_charA_gui      &m_charA_ctrl     &t3_mod4          &none                                     &none   &none  &none                        &kp DEL &kp BSPC &kp SPACE                         &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     };
@@ -935,4 +940,4 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 
 
 
-// S next
+// T next
