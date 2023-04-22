@@ -5,30 +5,31 @@
 #include <dt-bindings/zmk/backlight.h>
 
 #define DEFAULT           0
-#define strings_l           1
-#define chars_number      2
-#define chars_number_m    3
-#define chars_number_m2   4
-#define arrowB            5
-#define arrowB_shift      6  //|=
-#define arrowB_shift2     7
-#define arrowB_fkey       8
+#define strings_l         1
+#define chars_split       2
+#define chars_number      3
+#define chars_number_m    4
+#define chars_number_m2   5
+#define arrowB            6
+#define arrowB_shift      7  //|=
+#define arrowB_shift2     8
+#define arrowB_fkey       9
 
-#define keypad_l          9 //default
-#define fn_l              10 //default
-#define mod_l             11 //default
+#define keypad_l          10 //default
+#define fn_l              11 //default
+#define mod_l             12 //default
 
-#define numA              12
-#define arrowA            13
-#define space1            14
-#define enter1            15
-#define space2_num_char   16
-#define charsA_m          17
-#define charsA            18
-#define letters_cap       19
-#define letters           20
-#define f1_layer          21
-#define base_mod          22
+#define numA              13
+#define arrowA            14
+#define space1            15
+#define enter1            16
+#define space2_num_char   17
+#define charsA_m          18
+#define charsA            19
+#define letters_cap       20
+#define letters           21
+#define f1_layer          22
+#define base_mod          23
 
 //#define LSW LS(LWIN)
 
@@ -655,7 +656,10 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 #define mo_SLASH &mo_ChNr     chars_number_m SLASH
 
 #define to_arrow &to arrowB 
-#define to_ChNr &to chars_number 
+
+#define to_ChNr     &to chars_number 
+#define to_ChNr_spl &to chars_split 
+
 
 
 // --------------------------------------------------------
@@ -678,7 +682,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 
     default_layer {
       bindings = <
-       &t3_alt_tab  hr_N1      hr_N2      to_ChNr   to_arrow    hr_N5  &tog keypad_l                                                                                   &mo mod_l   hr_N6  hr_N7        to_ChNr    hr_N9      hr_N0      &kp BSPC
+       &t3_alt_tab  hr_N1      hr_N2      to_ChNr   to_arrow    hr_N5  &tog keypad_l                                                                                   &mo mod_l   hr_N6  hr_N7       to_ChNr_spl hr_N9      hr_N0      &kp BSPC
        &td_esc_tab  hr_Q       hr_W       mo_E      hr_R        hr_T   &t3_alt_arrow                                                                                   &none       hr_Y   hr_U         mo_I       hr_O       hr_P       &kp DEL
        &kp  TAB     hr_A       mo_SS      mo_DD     mo_FF2      hr_G   &kp LC(RIGHT)               &kp ENTER  &bootloader                &bootloader  &kp Z            &none       hr_H   hr_J         mo_KK      hr_L       hr_COLON   &kp DOUBLE_QUOTES
     &td_shift_caps  hr_Z       hr_X       hr_C      hr_V        hr_B                    &none      &none      &kp BSPC    &none   &none  &kp PG_UP &none     &none                 hr_N   hr_M         hr_COMMA   hr_DOT     hr_UNDER   _rsft
@@ -700,12 +704,17 @@ td_qoute_Lm: tap_dance_char_number_qoute {
       >;
     };
 
+// chars are on the left and right half
+// the hard to reach chars from the left has been moved to right
+// some combination so chars should be easier to type right now
+// the righ side keys are kept "fixed" of what we already use, so you only have to learn the keys on the left
+    
     chars_split_layer {
       bindings = <
         &none            &none             &none             &kp SPACE         to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &kp CARET         &kp PERCENT       &kp RIGHT_BRACKET &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
-      &kp DOUBLE_QUOTES  &kp COLON         &kp TILDE         &kp BACKSLASH     &kp RPAR          &kp GRAVE     &sl letters         &kp ENTER   &none                 &none   &kp E              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          &kp PLUS         &td_colon       &td_qoute
-        &sl letters_cap  &kp QMARK     &kp GREATER_THAN      &kp LESS_THAN     &kp RIGHT_BRACE   &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
+      &kp DOUBLE_QUOTES  &kp COLON         &kp TILDE         &kp BACKSLASH     &kp RPAR          &kp GRAVE     &sl letters         &kp ENTER   &none                 &none   &kp T              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          &kp PLUS         &td_colon       &td_qoute
+        &sl letters_cap  &kp QMARK         &kp LESS_THAN     &kp GREATER_THAN  &kp RIGHT_BRACE   &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
         &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     };  
@@ -951,4 +960,4 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 
 
 
-// T next
+// U next
