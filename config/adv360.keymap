@@ -688,16 +688,27 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 
 // h  : https://
 // d  : doesn't
+// c  : can't 
 
     strings_layer {
       bindings = <
         &none &none        &none        &none        &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &none
         &none &to 0        &none        &none        &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &none
-        &none &none        &none        &m_d_doesnt  &none        &none        &none            &none  &none                        &none   &kp S                 &none      &m_h_https   &none        &none        &none        &none        &none
-        &none &none        &none        &none        &none        &none                 &none   &none  &none  &none         &none   &none   &none  &none                     &none        &none        &none        &none        &none        &none
+        &none &none        &m_s_self    &m_d_doesnt  &none        &none        &none            &none  &none                        &none   &kp S                 &none      &m_h_https   &none        &none        &none        &none        &none
+        &none &none        &none        &m_c_cant    &none        &none                 &none   &none  &none  &none         &none   &none   &none  &none                     &none        &none        &none        &none        &none        &none
         &none &none        &none        &none        &none                              &none   &none  &none                        &none   &none  &none                                  &none        &none        &none        &none        &none
       >;
     };
+
+    chars_split_layer {
+      bindings = <
+        &none            &none             &none             &kp SPACE         to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
+        &none            &to 0             &kp CARET         &kp PERCENT       &kp RIGHT_BRACKET &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
+      &kp DOUBLE_QUOTES  &kp COLON         &kp TILDE         &kp BACKSLASH     &kp RPAR          &kp GRAVE     &sl letters         &kp ENTER   &none                 &none   &kp E              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          &kp PLUS         &td_colon       &td_qoute
+        &sl letters_cap  &kp QMARK     &kp GREATER_THAN      &kp LESS_THAN     &kp RIGHT_BRACE   &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
+        &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
+      >;
+    };  
 
    chars_number_layer {
       bindings = <

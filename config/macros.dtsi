@@ -21,6 +21,29 @@ m_d_doesnt: m_base_doesnt  {
               = <&macro_tap &kp D &kp O &kp E &kp S &kp N &kp SINGLE_QUOTE &kp T>;
       };
 
+m_c_cant: m_base_cant  {
+            label = "m_base_cant";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+              = <&macro_tap &kp C &kp A &kp N &kp SINGLE_QUOTE &kp T>;
+      };
+
+// self
+m_s_self: m_base_self  {
+            label = "m_base_self";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+              = <&macro_tap &kp S &kp E &kp L &kp F>;
+              //= <&macro_tap &kp S &kp E &kp L &kp F &kp DOT>;
+      };
+
+
 // --------------------------------------------------------
 
 m_0mod_lalt: m_base_mod_tap_hold_lalt  {

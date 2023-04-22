@@ -1,0 +1,15 @@
+ 
+1). < + number
+ 
+ auto stride = torch::ExpandingArray<2>({2, 2});
+ torch::ExpandingArray<2> shape({-1, 256 * 6 * 6});
+
+2). mix and switching between the chars on base and char layers: << "/" << 
+
+std::count << "Train:" << epoch << " " << end << "/" << data_size
+
+3). char layer, base layer char, chair layer
+char layer, base layer, char layer, base layer
+
+<< "\t"
+
