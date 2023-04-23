@@ -8,8 +8,19 @@
 
 std::count << "Train:" << epoch << " " << end << "/" << data_size
 
+sol: 
+chars_split_layer
+
 3). char layer, base layer char, chair layer
 char layer, base layer, char layer, base layer
 
 << "\t"
+
+sol: 
+chars_split_layer
+
+4). char, base, number
+You have to type the change layer keys two times
+
+make -j8
 

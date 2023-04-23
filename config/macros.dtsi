@@ -1,5 +1,8 @@
 // --------------------------------------------------------
 
+
+// --------------------------------------------------------
+
 // string: 'https://'
 m_h_https: m_base_https  {
             label = "m_base_https";
@@ -652,6 +655,18 @@ m_toNrCh_qoute2: m_to_number_char_quote2 {
             bindings
                 = <&to 0>
                 , <&macro_tap &kp LC(ENTER)>
+                ;
+      };
+
+      m_to0_space: m_chars_number_to0_space {
+            label = "m_chars_number_to0_space";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to 0>
+                , <&macro_tap &kp SPACE>
                 ;
       };
 

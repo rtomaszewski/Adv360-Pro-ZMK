@@ -708,14 +708,14 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 // the hard to reach chars from the left has been moved to right
 // some combination so chars should be easier to type right now
 // the righ side keys are kept "fixed" of what we already use, so you only have to learn the keys on the left
-    
+
     chars_split_layer {
       bindings = <
-        &none            &none             &none             &kp SPACE         to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
+        &none            &none             &none             to_ChNr           to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &kp CARET         &kp PERCENT       &kp RIGHT_BRACKET &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
       &kp DOUBLE_QUOTES  &kp COLON         &kp TILDE         &kp BACKSLASH     &kp RPAR          &kp GRAVE     &sl letters         &kp ENTER   &none                 &none   &kp T              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          &kp PLUS         &td_colon       &td_qoute
         &sl letters_cap  &kp QMARK         &kp LESS_THAN     &kp GREATER_THAN  &kp RIGHT_BRACE   &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
-        &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
+        &none            &none             &none             &none             &sl arrowA                           mo_SPACE2     &m_to0_space &none                 &kp DEL &sl letters &m_to0_enter                   &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     };  
 
@@ -725,7 +725,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
         &none            &to 0             &kp N9            &kp N8            &kp N7            &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
         &kp TAB          &kp UNDER         mo_N6             mo_N5             mo_N4             &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp E              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          &kp PLUS         &td_colon       &td_qoute
         &sl letters_cap  &kp COMMA         &kp N3            &kp N2            &kp N1            &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
-        &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
+        &none            &none             &none             &none             &sl arrowA                           mo_SPACE2     &m_to0_space &none              &kp DEL &sl letters &m_to0_enter                      &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     };  
 
