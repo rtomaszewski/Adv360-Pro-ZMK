@@ -24,3 +24,16 @@ You have to type the change layer keys two times
 
 make -j8
 
+5). base..., char, base, number
+
+Lunarlander-v2
+
+6).    base, char, base, numbers
+
+nn.Dropout(p=0.6)
+
+7).  base, char_num, char_num, base
+
+ x = self.affine1(x)
+ ...e1(x)
+ 

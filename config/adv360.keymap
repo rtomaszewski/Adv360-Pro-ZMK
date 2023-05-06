@@ -737,14 +737,15 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 // spc: 'alt+right space|'
 // '  : '''
 // "  : """
-// 
+// t  : \t 
+//
 //TODO:
 //  '<end> ', example: "string|" -> "string" |
 
    chars_number_m_layer {
       bindings = <
         &none            &none             &none             &none             to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &m_toNrCh_star    &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
-        &none            &to 0             &m_N9             &m_N8             &m_N7             &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &td_minus_r       &td_equals       &kp EXCL        &kp GRAVE
+        &none            &to 0             &m_N9             &m_N8             &m_N7             &m_toNrCh_t &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &td_minus_r       &td_equals       &kp EXCL        &kp GRAVE
         &key_repeat      &kp UNDER         &m_N6             &m_N5_d           &m_N4             &m_N0         &sl letters         &kp ENTER   &none                 &none   &kp M              &sl letters &kp DOLLAR  &m_toNrCh_lpar   &m_toNrCh_slash   &m_toNrCh_plus   &td_colon_Lm    &td_qoute_Lm
         &sl letters_cap  &kp COMMA         &m_N3             &m_N2             &m_N1             &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none              &m_toNrCh_pipe &kp HASH         &td_less          &td_more         &td_under       &sl letters_cap
         &none            &none             &none             &none             &sl arrowA                        &m_toNrCh_space   &sl letters &none              &kp DEL &sl letters &kp ENTER                         &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
@@ -862,7 +863,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
       bindings = <
         &none &none        &none        &none        &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &kp LC(BSPC)
         &none &none        &none        &kp UP      &t3_alt_arrow &none        &none                                                                              &none      &none        &none        &none        &none        &none        &kp LC(DEL)
-        &none &none        &kp LEFT     &kp DOWN     &kp LC(RIGHT) &kp LA(RIGHT) &none           &none  &none                        &none   &kp H                &none      &none        &none        &none        &none        &none        &none 
+        &none &none        &kp LEFT     &kp DOWN     &kp LC(RIGHT) &kp LA(RIGHT) &none           &none  &none                        &none   &kp H                &none      &none        &none        &none        &none        &m_to0_colon &none 
         &none &none        &none        &none        &kp BSPC     &kp DEL                &none   &none  &none  &none         &none   &none   &none  &none                    &none        &none        &none        &none        &none        &none
         &none &none        &none        &none        &none                               &none   &none  &none                        &none   &none  &kp LC(ENTER)                         &none        &none        &none        &none        &none
       >;
@@ -882,7 +883,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
       bindings = <
         &none &none        &none        &none        &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &kp LC(BSPC)
         &none &none        &none        &kp UP       &none        &none        &none                                                                              &none      &none        &none        &none        &none        &none        &kp LC(DEL)
-        &none &none        &none        &none        &none        &none        &none             &none  &none                        &none   &kp K                &none      &none        &none        &none        &none        &none        &none
+        &none &none        &none        &none        &none        &none        &none             &none  &none                        &none   &kp K                &none      &none        &none        &none        &none        &m_to0_colon &none
         &none &none        &none        &none        &none        &none                  &none   &none  &none  &none         &none   &none   &none  &none                    &none        &none        &none        &none        &none        &none
         &none &none        &none        &none        &none                               &none   &none  &none                        &none   &none  &m_char_n_ENTER                       &none        &none        &none        &none        &none
       >;

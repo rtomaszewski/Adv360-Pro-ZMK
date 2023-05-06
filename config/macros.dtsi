@@ -266,6 +266,7 @@ m_charA_shift: m_to_charsA_shift {
 //                , <&macro_tap &kp C>
 //                , <&macro_release &kp LCTRL>
 
+
 // --------------------------------------------------------
 
     m_toNrCh_equal: m_to_number_char_equal {
@@ -407,12 +408,25 @@ m_charA_shift: m_to_charsA_shift {
             label = "m_to_number_char_pipe";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <10>;
+            wait-ms = <0>;
             tap-ms = <10>;
             bindings
                 = <&macro_tap &kp BACKSLASH &kp N>
                 ;
       }; 
+
+    m_toNrCh_t: m_to_number_char_t {
+            label = "m_to_number_char_t";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_tap &kp BACKSLASH &kp T>
+                ;
+      }; 
+
+
 
 //helps in "c" language to type the semicolon and move to new line
 //often currsor is in a middle of some string, example: myarray[1|]
@@ -669,6 +683,18 @@ m_toNrCh_qoute2: m_to_number_char_quote2 {
                 , <&macro_tap &kp SPACE>
                 ;
       };
+
+  m_to0_colon: m_to0_colon {
+            label = "m_to0_colon";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to DEFAULT>
+                , <&macro_tap &kp END &kp COLON &kp ENTER>
+                ;
+      }; 
 
 // --------------------------------------------------------
 
