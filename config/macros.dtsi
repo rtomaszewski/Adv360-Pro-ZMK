@@ -696,6 +696,19 @@ m_toNrCh_qoute2: m_to_number_char_quote2 {
                 ;
       }; 
 
+
+  m_to0_comma: m_to0_comma {
+            label = "m_to0_comma";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to DEFAULT>
+                , <&macro_tap &kp END &kp COMMA &kp ENTER>
+                ;
+      }; 
+
 // --------------------------------------------------------
 
    a_shift_dn: m_arrowB_shift_down {
