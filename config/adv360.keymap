@@ -6,30 +6,31 @@
 
 #define DEFAULT           0
 #define strings_l         1
-#define chars_split       2
-#define chars_number      3
-#define chars_number_m    4
-#define chars_number_m2   5
-#define arrowB            6
-#define arrowB_shift      7  //|=
-#define arrowB_shift2     8
-#define arrowB_fkey       9
+#define capslock_layer    2
+#define chars_split       3
+#define chars_number      4
+#define chars_number_m    5
+#define chars_number_m2   6
+#define arrowB            7
+#define arrowB_shift      8  //|=
+#define arrowB_shift2     9
+#define arrowB_fkey       10
 
-#define keypad_l          10 //default
-#define fn_l              11 //default
-#define mod_l             12 //default
+#define keypad_l          11 //default
+#define fn_l              12 //default
+#define mod_l             13 //default
 
-#define numA              13
-#define arrowA            14
-#define space1            15
-#define enter1            16
-#define space2_num_char   17
-#define charsA_m          18
-#define charsA            19
-#define letters_cap       20
-#define letters           21
-#define f1_layer          22
-#define base_mod          23
+#define numA              14
+#define arrowA            15
+#define space1            16
+#define enter1            17
+#define space2_num_char   18
+#define charsA_m          19
+#define charsA            20
+#define letters_cap       21
+#define letters           22
+#define f1_layer          23
+#define base_mod          24
 
 //#define LSW LS(LWIN)
 
@@ -297,7 +298,7 @@
             label = "TAP_DANCE_SK_SHIFT_CAPS";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&skq LSHFT>, <&kp CAPS>;
+            bindings = <&skq LSHFT>, <&to capslock_layer>;
       };
 
       td_esc_tab: td_esc_tab {
@@ -701,6 +702,16 @@ td_qoute_Lm: tap_dance_char_number_qoute {
         &none &none        &m_s_self    &m_d_doesnt  &none        &none        &none            &none  &none                        &none   &kp S                 &none      &m_h_https   &none        &none        &none        &none        &none
         &none &none        &none        &m_c_cant    &none        &none                 &none   &none  &none  &none         &none   &none   &none  &none                     &none        &none        &none        &none        &none        &none
         &none &none        &none        &none        &none                              &none   &none  &none                        &none   &none  &none                                  &none        &none        &none        &none        &none
+      >;
+    };
+
+    capslock_layer {
+      bindings = <
+        &none &none        &none        to_ChNr      to_arrow     &none        &none                                                                               &none      &none        &none        to_ChNr_spl   &none        &none           &kp BSPC
+        &none &kp LS(Q)    &kp LS(W)    &kp LS(E)    &kp LS(R)    &kp LS(T)    &none                                                                               &none      &kp LS(Y)    &kp LS(U)    &kp LS(I)     &kp LS(O)    &kp LS(P)       &kp DEL
+      &kp TAB &kp LS(A)    &kp LS(S)    &kp LS(D)    &kp LS(F)    &kp LS(G)    &none               &none       &none                        &none    &kp J         &none      &kp LS(H)    &kp LS(J)    &kp LS(K)     &kp LS(L)    &kp COLON       &kp DOUBLE_QUOTES
+        &to 0 &kp LS(Z)    &kp LS(X)    &kp LS(C)    &kp LS(V)    &kp LS(B)             &none      &none       &none  &none         &none   &none    &none  &none             &kp LS(N)    &kp LS(M)    &kp COMMA     &kp DOT      &kp UNDER       &none
+        &none &none        &none        &none        &m_to0_space                       mo_SPACE2  &sl charsA  &none                &none   &sl numA &kp ENTER                &m_to0_enter &none         &none        &none           &none
       >;
     };
 
