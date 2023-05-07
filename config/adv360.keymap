@@ -736,7 +736,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
         &none            &to 0             &kp CARET         &kp PERCENT       &kp RIGHT_BRACKET &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
       &kp DOUBLE_QUOTES  &kp COLON         &kp TILDE         &kp BACKSLASH     &kp RPAR          &kp GRAVE     &sl letters         &kp ENTER   &none                 &none   &kp T              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          &kp PLUS         &td_colon       &td_qoute
         &td_letter_caps  &kp QMARK         &kp LESS_THAN     &kp GREATER_THAN  &kp RIGHT_BRACE   &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
-        &none            &none             &none             &none             &sl arrowA                           mo_SPACE2     &m_to0_space &none                 &kp DEL &sl letters &m_to0_enter                   &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
+        &none            &none             &none             &none             &sl arrowA                           mo_SPACE2     &m_to0_space &none                 &kp DEL &sl letters &m_to0_enter                   &kp RPAR         &none             &none            &none           &none 
       >;
     };  
 
@@ -789,7 +789,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 // &sk LA(LCTRL)
     arrowB_layer { 
       bindings = <
-        &none   &none     &none         to_ChNr        &none              &none        &none                                                                              &none      &none        &none            &none        &none         &none        &kp BSPC
+  &t3_alt_tab   &none     &none         to_ChNr        &none              &none        &none                                                                              &none      &none        &none            &none        &none         &none        &kp BSPC
     &td_esc_tab &to 0     &none         &none          &none              &none        &none                                                                              &none      &kp LA(HOME) &kp LA(LEFT)     &kp UP       &kp LA(RIGHT) &kp LA(END)  &kp DEL
         &kp TAB &none     &none         &sk LA(LCTRL)  go_arrowB_shift2   &none        &sl letters       &kp ENTER   &none                        &none   &kp A          &sl letters &kp HOME     &kp LEFT         &kp DOWN     &kp RIGHT     &kp END      &kp PG_UP
         &kp INS &kp LC(Z) &kp LC(X)     &kp LC(C)      &kp LC(V)          &key_repeat           &none    &none       &kp BSPC  &none      &none   &none   &none  &none               &kp LC(HOME) &kp LC(LEFT)     &none        &kp LC(RIGHT) &kp LC(END)  &kp PG_DN

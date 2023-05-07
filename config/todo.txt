@@ -36,4 +36,16 @@ nn.Dropout(p=0.6)
 
  x = self.affine1(x)
  ...e1(x)
- 
+
+8). typing chars that require layer change is anoying
+char, letter, number, char
+char*, letter, number, char
+
+<h1>
+</h1>
+
+9). require layar changing as "." is not on the char_layer
+char, base, char
+
+'./' 
+
