@@ -510,6 +510,22 @@ m_toNrCh_qoute2: m_to_number_char_quote2 {
       }; 
 
 
+// allows you type: <numbers+>
+// example: <1>
+
+m_toNrCh_diamond: m_to_number_char_diamond {
+            label = "m_to_number_char_diamond";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp LESS_THAN &kp GREATER_THAN &kp LEFT>
+                ;
+      }; 
+
+
     m_N1: m_to_number_char_N1 {
             label = "m_to_number_char_N1";
             compatible = "zmk,behavior-macro";
