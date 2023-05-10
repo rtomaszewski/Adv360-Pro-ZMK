@@ -480,12 +480,57 @@ m_toNrCh_space: m_to_number_char_space {
             wait-ms = <3>;
             tap-ms = <8>;
             bindings
-                = <&macro_press &kp LALT>
-                , <&macro_tap &kp RIGHT>
-                , <&macro_release &kp LALT>
+                = <&to DEFAULT>
+                , <&macro_tap &kp LA(RIGHT)>
                 , <&macro_tap &kp SPACE>
                 ;
       }; 
+
+// used to move the currsor to the end of line and press space
+// example: "text|" -> "text" |
+m_toNrCh_enter_space: m_to_number_enter_space {
+            label = "m_to_number_enter_space";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp LA(RIGHT)>
+                , <&macro_tap &kp SPACE>
+                ;
+      }; 
+
+// used to move the currsor to the end of line and press space
+// example: "text|" -> "text" |
+m_toNrCh_space_c: m_to_number_char_space_ctrl {
+            label = "m_to_number_char_space_ctrl";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+                = <&to DEFAULT>
+                , <&macro_tap &kp LC(RIGHT)>
+                , <&macro_tap &kp SPACE>
+                ;
+      }; 
+
+// used to move the currsor to the end of line and press space
+// example: "text|" -> "text" |
+m_toNrCh_enter_space_c: m_to_number_enter_space_ctrl {
+            label = "m_to_number_enter_space_ctrl";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp LC(RIGHT)>
+                , <&macro_tap &kp SPACE>
+                ;
+      }; 
+
 
 m_toNrCh_qoute: m_to_number_char_qoute {
             label = "m_to_number_char_qoute";

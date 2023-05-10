@@ -616,7 +616,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 #define hr_H &lh_pht1b LSFT H
 #define hr_J &lh_pht1b LSFT J
 #define hr_K &lh_pht1b LSFT K
-#define hr_L &lh_pht1b LSFT L
+//#define hr_L &lh_pht1b LSFT L
 #define hr_COLON  &lh_pht1b LSFT COLON
 
 #define hr_N6 &lh_pht1b LSFT N6
@@ -650,19 +650,27 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 #define mo_E &mo_kp2 strings_l E
 #define mo_I &mo_kp2 strings_l I
 
+
 //#define mo_DD &mo_kp2 charsA D    
-#define   mo_DD &mo_ChNr     chars_number_m D    
+#define   mo_DD &mo_ChNr     chars_number_m D  
+//#define mo_KK &mo_kp2 numA K
+#define   mo_KK &mo_ChNr     chars_number_m K     
+
 
 //#define mo_SS &mo_ChNrtog  chars_number_m S
 #define   mo_SS &mo_ChNr     chars_number_m2 S
+#define   mo_LL &mo_ChNr     chars_number_m2 L
 
-//#define mo_KK &mo_kp2 numA K
-#define   mo_KK &mo_ChNr     chars_number_m K   
 
 //allows to type: \n or \d
+// space, enter + alt combination
 #define mo_N5    &mo_ChNr     chars_number_m N5
-#define mo_N6    &mo_ChNr     chars_number_m2 N6
 #define mo_SLASH &mo_ChNr     chars_number_m SLASH
+
+// space, enter + ctrl combination
+#define mo_N6    &mo_ChNr     chars_number_m2 N6
+#define mo_PLUS  &mo_ChNr     chars_number_m2 PLUS
+
 
 #define to_arrow &to arrowB 
 
@@ -693,7 +701,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
       bindings = <
        &t3_alt_tab  hr_N1      hr_N2      to_ChNr   to_arrow    hr_N5  &tog keypad_l                                                                                   &mo mod_l   hr_N6  hr_N7       to_ChNr    to_ChNr_spl hr_N0      &kp BSPC
        &td_esc_tab  hr_Q       hr_W       mo_E      hr_R        hr_T   &t3_alt_arrow                                                                                   &none       hr_Y   hr_U         mo_I       hr_O       hr_P       &kp DEL
-       &kp  TAB     hr_A       mo_SS      mo_DD     mo_FF2      hr_G   &kp LC(RIGHT)               &kp ENTER  &bootloader                &bootloader  &kp Z            &none       hr_H   hr_J         mo_KK      hr_L       hr_COLON   &kp DOUBLE_QUOTES
+       &kp  TAB     hr_A       mo_SS      mo_DD     mo_FF2      hr_G   &kp LC(RIGHT)               &kp ENTER  &bootloader                &bootloader  &kp Z            &none       hr_H   hr_J         mo_KK      mo_LL      hr_COLON   &kp DOUBLE_QUOTES
     &td_shift_caps  hr_Z       hr_X       hr_C      hr_V        hr_B                    &none      &none      &kp BSPC    &none   &none  &kp PG_UP &none     &none                 hr_N   hr_M         hr_COMMA   hr_DOT     hr_UNDER   _rsft
        &mo  2       _lwin      _lctr      _lalt     &sl arrowA                        mo_SPACE   &sl charsA   &kp DEL                    &kp PG_DN &sl numA  mo_ENTER                     &sl f1_layer _ralt      _rctr      _rwin      &mo 2
       >; 
@@ -744,7 +752,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
       bindings = <
         &none            &none             &none             &kp SPACE         to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &kp N9            &kp N8            &kp N7            &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
-        &kp TAB          &to 0             mo_N6             mo_N5             mo_N4             &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp E              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          &kp PLUS         &td_colon       &td_qoute
+        &kp TAB          &to 0             mo_N6             mo_N5             mo_N4             &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp E              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          mo_PLUS          &td_colon       &td_qoute
         &td_letter_caps  &kp LC(RIGHT)     &kp N3            &kp N2            &kp N1            &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
         &none            &none             &none             &none             &sl arrowA                           mo_SPACE2     &m_to0_space &none              &kp DEL &sl letters &m_to0_enter                      &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
@@ -760,29 +768,34 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 // "  : """
 // t  : \t 
 // x  : <|>
+// space: alt+right, space, L_Nr
+// enter: alt+right, space, L_0
 //
 //TODO:
 //  '<end> ', example: "string|" -> "string" |
 
    chars_number_m_layer {
       bindings = <
-        &none            &none             &none             &none             to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &m_toNrCh_star    &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
-        &none            &to 0             &m_N9             &m_N8             &m_N7             &m_toNrCh_t &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &td_minus_r       &td_equals       &kp EXCL        &kp GRAVE
-        &key_repeat      &kp UNDER         &m_N6             &m_N5_d           &m_N4             &m_N0         &sl letters         &kp ENTER   &none                 &none   &kp M              &sl letters &kp DOLLAR  &m_toNrCh_lpar   &m_toNrCh_slash   &m_toNrCh_plus   &td_colon_Lm    &td_qoute_Lm
-        &sl letters_cap  &m_N2            &m_toNrCh_diamond  &m_N2             &m_N1             &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none              &m_toNrCh_pipe &kp HASH         &td_less          &td_more         &td_under       &sl letters_cap
-        &none            &none             &none             &none             &sl arrowA                        &m_toNrCh_space   &sl letters &none              &kp DEL &sl letters &kp ENTER                         &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
+        &none            &none             &none             &none             to_arrow          &none         &none                                                                              &kp CARET   &kp PERCENT &kp LEFT_BRACE   &m_toNrCh_star    &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
+        &none            &to 0             &m_N9             &m_N8             &m_N7             &m_toNrCh_t &none                                                                                &none       &kp AT      &kp LEFT_BRACKET &td_minus_r       &td_equals       &kp EXCL        &kp GRAVE
+        &key_repeat      &kp UNDER         &m_N6             &m_N5_d           &m_N4             &m_N0         &sl letters         &kp ENTER   &none                 &none   &kp M                &sl letters &kp DOLLAR  &m_toNrCh_lpar   &m_toNrCh_slash   &m_toNrCh_plus   &td_colon_Lm    &td_qoute_Lm
+        &sl letters_cap  &m_N2            &m_toNrCh_diamond  &m_N2             &m_N1             &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none                &m_toNrCh_pipe &kp HASH         &td_less          &td_more         &td_under       &sl letters_cap
+        &none            &none             &none             &none             &sl arrowA                        &m_toNrCh_space   &sl letters &none              &kp DEL &sl letters &m_toNrCh_enter_space               &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     };
 
 //on base layer helps to type the chars sequnce that requries movements like: ^\
 // LS \^ or \% or in general \<char> or ^<char>
+// 
+// 
+
    chars_number_m2_layer {
       bindings = <
         &none            &none             &none             &kp SPACE         to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &kp N9            &kp N8            &kp N7            &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
         &kp TAB          &kp UNDER         &none             &kp BACKSLASH     &kp CARET         &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp R              &sl letters &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &td_colon       &td_qoute
         &sl letters_cap  &kp COMMA         &kp N3            &kp N2            &kp N1            &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &sl letters_cap
-        &none            &none             &none             &none             &sl arrowA                           mo_SPACE2      &sl letters &none               &kp DEL &sl letters &m_to0_enter                     &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
+        &none            &none             &none             &none             &sl arrowA                     &m_toNrCh_space_c    &sl letters &none                 &kp DEL &sl letters &m_toNrCh_enter_space_c        &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
     }; 
 
