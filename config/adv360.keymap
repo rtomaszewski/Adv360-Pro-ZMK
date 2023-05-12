@@ -127,6 +127,16 @@
        bindings = <&mo>, <&kp>;
     }; 
 
+    mo_kp3_m: behavior_mo_kp3_m {
+       label = "behavior_mo_kp3_m";
+       compatible = "zmk,behavior-hold-tap";
+       #binding-cells = <2>;
+       flavor = "tap-preferred";
+       tapping-term-ms = <200>;
+       quick-tap-ms = <200>;
+       bindings = <&mo>, <&m_to0_space>;
+    };
+
     mo_ChNr: behavior_to_char_nr {
        label = "behavior_to_char_nr";
        compatible = "zmk,behavior-hold-tap";
@@ -636,8 +646,11 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 #define mo_ENTER &mo_kp1 enter1 ENTER
 
 //on the char_num layer allows to press enter and move to L0
-#define mo_SPACE2 &mo_kp1 space2_num_char SPACE
-    
+#define mo_SPACE2   &mo_kp1   space2_num_char SPACE
+// macron on tap, on hold enable new layer
+// allows to tap and change layer, on hold on the new layer you can change layer as well
+#define mo_SPACE3_m &mo_kp3_m space2_num_char 0
+
 
 //#define mo_FF1 &mo_kp2 charsA F
 //#define mo_FF2 &mo_kp2 arrowA F
@@ -728,9 +741,11 @@ td_qoute_Lm: tap_dance_char_number_qoute {
         &none &kp LS(Q)    &kp LS(W)    &kp LS(E)    &kp LS(R)    &kp LS(T)    &none                                                                               &none      &kp LS(Y)    &kp LS(U)    &kp LS(I)     &kp LS(O)    &kp LS(P)       &kp DEL
       &kp TAB &kp LS(A)    &kp LS(S)    &kp LS(D)    &kp LS(F)    &kp LS(G)    &none               &none       &none                        &none    &kp U         &none      &kp LS(H)    &kp LS(J)    &kp LS(K)     &kp LS(L)    &kp COLON       &kp DOUBLE_QUOTES
         &to 0 &kp LS(Z)    &kp LS(X)    &kp LS(C)    &kp LS(V)    &kp LS(B)             &none      &none       &none  &none         &none   &none    &none  &none             &kp LS(N)    &kp LS(M)    &kp COMMA     &kp DOT      &kp UNDER       &none
-        &none &none        &none        &none        mo_SPACE2                       &m_to0_space  &sl charsA  &none                &none   &sl numA &m_to0_enter             &kp ENTER    &none         &none        &none           &none
+        &none &none        &none        &none        mo_SPACE2                         mo_SPACE3_m &sl charsA  &none                &none   &sl numA &m_to0_enter             &kp ENTER    &none         &none        &none           &none
       >;
     };
+
+// &m_to0_space
 
 // chars are on the left and right half
 // the hard to reach chars from the left has been moved to right
