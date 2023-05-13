@@ -495,16 +495,17 @@ td_qoute_Lm: tap_dance_char_number_qoute {
         };
 
 // --------------------------------------------------------
-// used on arrowB_shift_layer
+// used on arrowB_layer
 
    td_ctrl_v: tap_dance_arrowB_ctrl_v {
             label = "tap_dance_arrowB_ctrl_v";
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&a_ctrl_v>, <&a_ctrl_v_enter>;
+            bindings = <&kp LC(V)>, <&a_ctrl_v_enter>;
         };
 
+// --------------------------------------------------------
 
 // window switching in windows
   t3_alt_tab: swapper_alt_tab {
@@ -841,7 +842,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
   &t3_alt_tab   &none     &none         to_ChNr        &none              &none        &none                                                                              &none      &none        &none            &none        &none         &none        &kp BSPC
     &td_esc_tab &to 0     &none         &none          &none              &none        &none                                                                              &none      &kp LA(HOME) &kp LA(LEFT)     &kp UP       &kp LA(RIGHT) &kp LA(END)  &kp DEL
         &kp TAB &to 0     &none         &sk LA(LCTRL)  go_arrowB_shift2   &none        &sl letters       &kp ENTER   &none                        &none   &kp A          &sl letters &kp HOME     &kp LEFT         &kp DOWN     &kp RIGHT     &kp END      &kp PG_UP
-        &kp INS &kp LC(Z) &kp LC(X)     &kp LC(C)      &kp LC(V)          &key_repeat           &none    &none       &kp BSPC  &none      &none   &none   &none  &none               &kp LC(HOME) &kp LC(LEFT)     &none        &kp LC(RIGHT) &kp LC(END)  &kp PG_DN
+        &kp INS &kp LC(Z) &kp LC(X)     &kp LC(C)      &td_ctrl_v         &key_repeat           &none    &none       &kp BSPC  &none      &none   &none   &none  &none               &kp LC(HOME) &kp LC(LEFT)     &none        &kp LC(RIGHT) &kp LC(END)  &kp PG_DN
         &none   &kp LC(Y) &none         &none          &sl arrowA                               mo_SPACE &sl charsA  &kp DEL              &none   &sl numA &kp ENTER                              &sl f1_layer     &none        &none         &none        &none
       >;
     };
@@ -852,7 +853,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
         &none   &none        &none        &none      &none         &none        &none                                                                              &none      &none        &none            &none        &none         &none        &kp BSPC
         &kp ESC &a_to0       &kt LSHFT    &a_shift_up &none        &none        &none                                                                              &none      &kp LA(HOME) &kp LA(LEFT)     &kp UP       &kp LA(RIGHT) &kp LA(END)  &kp DEL
         &kp TAB &kp N2       &none        &sk LSHFT  &sk LA(LCTRL) &sl numA     &none             &kp ENTER   &none                        &none   &kp B           &none      &kp HOME     &kp LEFT         &kp DOWN     &kp RIGHT     &kp END      &kp PG_UP
-        &kp INS &a_ctrl_z    &a_ctrl_x    &a_ctrl_c  &td_ctrl_v    &kp ENTER             &none    &none       &none  &none         &none   &none   &none  &none               &kp LC(HOME) &kp LC(LEFT)     &none        &kp LC(RIGHT) &kp LC(END)  &kp PG_DN
+        &kp INS &a_ctrl_z    &a_ctrl_x    &a_ctrl_c  &a_ctrl_v     &none                &none     &none       &none  &none         &none   &none   &none  &none               &kp LC(HOME) &kp LC(LEFT)     &none        &kp LC(RIGHT) &kp LC(END)  &kp PG_DN
         &none   &kp LC(Y)    &none        &none      &tog arrowA                        &kp SPACE &to charsA  &none                &none   &to numA &kp ENTER                              &to f1_layer     &none        &none         &none        &none
       >;
     }; 

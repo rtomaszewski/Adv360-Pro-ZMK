@@ -840,8 +840,7 @@ m_toNrCh_diamond: m_to_number_char_diamond {
             wait-ms = <10>;
             tap-ms = <10>;
             bindings
-                = <&to arrowB>
-                , <&macro_tap &kp LC(V)>
+                = <&macro_tap &kp LC(V)>
                 , <&macro_tap &kp ENTER>
                 ;
       };
