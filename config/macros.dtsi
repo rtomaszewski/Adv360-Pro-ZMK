@@ -833,6 +833,19 @@ m_toNrCh_diamond: m_to_number_char_diamond {
                 ;
       };
 
+       a_ctrl_v_enter: m_arrowB_ctrl_v_enter {
+            label = "m_arrowB_ctrl_v_enter";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&to arrowB>
+                , <&macro_tap &kp LC(V)>
+                , <&macro_tap &kp ENTER>
+                ;
+      };
+
      a_ctrl_x: m_arrowB_ctrl_x {
             label = "m_arrowB_ctrl_x";
             compatible = "zmk,behavior-macro";

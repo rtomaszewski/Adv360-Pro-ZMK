@@ -495,6 +495,16 @@ td_qoute_Lm: tap_dance_char_number_qoute {
         };
 
 // --------------------------------------------------------
+// used on arrowB_shift_layer
+
+   td_ctrl_v: tap_dance_arrowB_ctrl_v {
+            label = "tap_dance_arrowB_ctrl_v";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&a_ctrl_v>, <&a_ctrl_v_enter>;
+        };
+
 
 // window switching in windows
   t3_alt_tab: swapper_alt_tab {
@@ -753,12 +763,16 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 // the righ side keys are kept "fixed" of what we already use, so you only have to learn the keys on the left
 //
 // - Lshift on double tap enables capslock layer
+// - moved double_qoutes to index finger to make it easy to type: { "%p" }
+// layer used to type "wired" char sequences that are "unergonomic" otherwise
+// \= @tile
+// "#{@item.type}
 
     chars_split_layer {
       bindings = <
         &none            &none             &kp RIGHT_BRACE   to_ChNr           to_arrow          &none         &none                                                                              &none     &none       &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &none           &kp BSPC
         &none            &none             &kp CARET         &kp PERCENT       &kp RIGHT_BRACKET &none         &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &none
-      &kp DOUBLE_QUOTES  &to 0             &kp TILDE         &kp BACKSLASH     &kp RPAR          &kp GRAVE     &sl letters         &kp ENTER   &none                 &none   &kp T              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          &kp PLUS         &td_colon       &td_qoute
+        &kp RPAR         &to 0             &kp TILDE         &kp BACKSLASH     &kp DOUBLE_QUOTES &kp GRAVE     &sl letters         &kp ENTER   &none                 &none   &kp T              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          mo_PLUS          &td_colon       &td_qoute
         &to capslock_l   &kp LC(RIGHT)     &kp LESS_THAN     &kp GREATER_THAN  &kp QMARK         &kp COLON               &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &td_comma         &td_dot          &td_under       &none
         &none            &none             &none             &none             &sl arrowA                           mo_SPACE2     &m_to0_space &none                 &kp DEL &sl letters &m_to0_enter                   &none            &none             &none            &none           &none 
       >;
@@ -838,7 +852,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
         &none   &none        &none        &none      &none         &none        &none                                                                              &none      &none        &none            &none        &none         &none        &kp BSPC
         &kp ESC &a_to0       &kt LSHFT    &a_shift_up &none        &none        &none                                                                              &none      &kp LA(HOME) &kp LA(LEFT)     &kp UP       &kp LA(RIGHT) &kp LA(END)  &kp DEL
         &kp TAB &kp N2       &none        &sk LSHFT  &sk LA(LCTRL) &sl numA     &none             &kp ENTER   &none                        &none   &kp B           &none      &kp HOME     &kp LEFT         &kp DOWN     &kp RIGHT     &kp END      &kp PG_UP
-        &kp INS &a_ctrl_z    &a_ctrl_x    &a_ctrl_c  &a_ctrl_v     &none                 &none    &none       &none  &none         &none   &none   &none  &none               &kp LC(HOME) &kp LC(LEFT)     &none        &kp LC(RIGHT) &kp LC(END)  &kp PG_DN
+        &kp INS &a_ctrl_z    &a_ctrl_x    &a_ctrl_c  &td_ctrl_v    &kp ENTER             &none    &none       &none  &none         &none   &none   &none  &none               &kp LC(HOME) &kp LC(LEFT)     &none        &kp LC(RIGHT) &kp LC(END)  &kp PG_DN
         &none   &kp LC(Y)    &none        &none      &tog arrowA                        &kp SPACE &to charsA  &none                &none   &to numA &kp ENTER                              &to f1_layer     &none        &none         &none        &none
       >;
     }; 
