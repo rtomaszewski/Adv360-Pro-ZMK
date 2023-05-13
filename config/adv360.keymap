@@ -31,6 +31,8 @@
 #define letters           22
 #define f1_layer          23
 #define base_mod          24
+#define arrowb_ctrl_l     25
+
 
 //#define LSW LS(LWIN)
 
@@ -166,6 +168,24 @@
           quick_tap_ms = <175>;
           flavor = "tap-preferred";
           bindings = <&kp>, <&kp>;
+      };
+
+// --------------------------------------------------------
+// TODO: ARROW_MODS
+// not used
+
+  ht_lctrl_right: arrowB_hold_lctrl_arrow_right {
+            label = "arrowB_hold_lctrl_arrow_right";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;                        // <---[[produces tap if held longer than tapping-term-ms]]
+            quick-tap-ms = <200>;
+            //global-quick-tap;
+           // bindings = <&m_lctrl_right>, <&kp RIGHT>;       // TODO: ARROW_MODS
+             bindings = <&mo>, <&kp>;
+                                        //1              q               a                z
+           // hold-trigger-key-positions = <1 2 3 4 5      15 16 17 18 19  29 30 31 32 33   47 48 49 50 51>;    // 14 <---[[right-hand keys]]
       };
 
 // --------------------------------------------------------
@@ -779,10 +799,6 @@ td_qoute_Lm: tap_dance_char_number_qoute {
       >;
     };  
 
-//&kp 
-//
-//&key_repeat
-
    chars_number_layer {
       bindings = <
         &none            &none             &none             &kp SPACE         to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
@@ -835,13 +851,15 @@ td_qoute_Lm: tap_dance_char_number_qoute {
       >;
     }; 
 
-// &to arrowB_shift2 
-// &sk LA(LCTRL)
+  // TODO: ARROW_MODS
+
+  #define _ctrl_right  &ht_lctrl_right arrowb_ctrl_l RIGHT 
+
     arrowB_layer { 
       bindings = <
   &t3_alt_tab   &none     &none         to_ChNr        &none              &none        &none                                                                              &none      &none        &none            &none        &none         &none        &kp BSPC
     &td_esc_tab &to 0     &none         &none          &none              &none        &none                                                                              &none      &kp LA(HOME) &kp LA(LEFT)     &kp UP       &kp LA(RIGHT) &kp LA(END)  &kp DEL
-        &kp TAB &to 0     &none         &sk LA(LCTRL)  go_arrowB_shift2   &none        &sl letters       &kp ENTER   &none                        &none   &kp A          &sl letters &kp HOME     &kp LEFT         &kp DOWN     &kp RIGHT     &kp END      &kp PG_UP
+        &kp TAB &to 0     &none         &sk LA(LCTRL)  go_arrowB_shift2   &none        &sl letters       &kp ENTER   &none                        &none   &kp A          &sl letters &kp HOME     &kp LEFT         &kp DOWN     _ctrl_right   &kp END      &kp PG_UP
         &kp INS &kp LC(Z) &kp LC(X)     &kp LC(C)      &td_ctrl_v         &key_repeat           &none    &none       &kp BSPC  &none      &none   &none   &none  &none               &kp LC(HOME) &kp LC(LEFT)     &none        &kp LC(RIGHT) &kp LC(END)  &kp PG_DN
         &none   &kp LC(Y) &none         &none          &sl arrowA                               mo_SPACE &sl charsA  &kp DEL              &none   &sl numA &kp ENTER                              &sl f1_layer     &none        &none         &none        &none
       >;
@@ -1029,9 +1047,24 @@ td_qoute_Lm: tap_dance_char_number_qoute {
       >;
     };
 
+// TODO: ARROW_MODS
+// used on the arrowB  layer to move between tabs up/down 
+//  { "keys": ["ctrl+1"], "command": "focus_group", "args": { "group": 0 } },
+
+  arrowb_ctrl_l {
+      bindings = <
+        &none &none    &none        &none        &none        &none        &none                                                                                    &none      &none   &none    &none    &none   &none   &none
+        &none &to 0    &kp LC(N9)   &kp LC(N8)   &kp LC(N7)   &none        &none                                                                                    &none      &none   &none    &none    &none   &none   &none
+        &none &to 0    &kp LC(N6)   &kp LC(N5)   &kp LC(N4)   &kp LC(N0)   &none                       &none  &none                        &none   &kp V            &none      &none   &none    &none    &none   &none   &none
+        &none &none    &kp LC(N3)   &kp LC(N2)   &kp LC(N1)   &none                            &none   &none  &none  &none         &none   &none   &none  &none                &none   &none    &none    &none   &none   &none
+        &none &none    &none        &none        &none                                        &none    &none  &none                        &none   &none  &none                        &none    &none    &none   &none   &none
+      >;
+    };  
+
+
   };
 };
 
 
 
-// V next
+// W next

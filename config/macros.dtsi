@@ -1,5 +1,22 @@
 // --------------------------------------------------------
 
+// --------------------------------------------------------
+
+// TODO: ARROW_MODS
+// not used on the arrowB_layer 
+// opted for a simple MO and dedicated layer for the key
+
+m_lctrl_right: m_l_hold_lctrl_right  {
+            label = "m_base_mod_tap_hold_lctrl";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <5>;
+            tap-ms = <5>;
+            bindings
+              = <&macro_press &mo base_mod &kp LALT>
+              , <&macro_pause_for_release>
+              , <&macro_release &mo base_mod &kp LALT>;
+      };
 
 // --------------------------------------------------------
 
