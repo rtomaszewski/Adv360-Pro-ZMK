@@ -520,8 +520,8 @@ m_toNrCh_enter_space: m_to_number_enter_space {
 
 // used to move the currsor to the end of line and press space
 // example: "text|" -> "text" |
-m_toNrCh_space_c: m_to_number_char_space_ctrl {
-            label = "m_to_number_char_space_ctrl";
+m_toNrCh_space_c: m_to_L0_space_ctrl {
+            label = "m_to_L0_space_ctrl";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <3>;
@@ -545,6 +545,22 @@ m_toNrCh_enter_space_c: m_to_number_enter_space_ctrl {
                 = <&to chars_number>
                 , <&macro_tap &kp LC(RIGHT)>
                 , <&macro_tap &kp SPACE>
+                ;
+      }; 
+
+
+// used to move the currsor to the end of line and press comma
+// example: "(text|)" -> "(text), |"
+m_comma_c: m_to_L0_comma_ctrl {
+            label = "m_to_L0_comma_ctrl";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <3>;
+            tap-ms = <8>;
+            bindings
+                = <&to DEFAULT>
+                , <&macro_tap &kp LC(RIGHT)>
+                , <&macro_tap &kp COMMA &kp SPACE>
                 ;
       }; 
 
