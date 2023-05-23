@@ -800,11 +800,11 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 
     chars_split_layer {
       bindings = <
-        &none            &none             &none             &kp SEMI          to_arrow          &none             &none                                                                              &none     &none       &none            &kp STAR          &none            &none           &kp BSPC
-        &none            &kp QMARK         &kp GRAVE         &kp BACKSLASH     &kp PERCENT       &kp RIGHT_BRACKET &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp DEL
-        &kp SINGLE_QUOTE &to 0             &kp AMPERSAND     &kp TILDE         &kp LEFT_BRACE    &kp RIGHT_BRACE   &sl letters         &kp ENTER   &none                 &none   &kp T              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          mo_PLUS          &kp COLON       &kp DOUBLE_QUOTES
-        &to capslock_l   &kp LC(RIGHT)     &kp LESS_THAN     &kp GREATER_THAN  &kp CARET         &kp RPAR                    &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &kp COMMA         &kp DOT          &kp UNDER       &none
-        &none            &none             &none             &none             &sl arrowA                               mo_SPACE2     &m_to0_space &none                 &kp DEL &sl letters &m_to0_enter                   to_ChNr          &kp STAR          &none            &none           &none 
+        &none            &none       &none          to_ChNr           to_arrow       &none             &none                                                                               &none       &none      &none            to_ChNr       &none     &none       &kp BSPC
+        &none            &kp QMARK   &kp GRAVE      &kp BACKSLASH     &kp PERCENT    &kp RIGHT_BRACKET &none                                                                               &none       &kp AT     &kp LEFT_BRACKET &kp MINUS     &kp EQUAL &kp EXCL    &kp DEL
+        &kp SINGLE_QUOTE &kp STAR    &kp AMPERSAND  &kp TILDE         &kp LEFT_BRACE &kp RIGHT_BRACE   &sl letters         &kp ENTER    &none                 &none  &kp T                 &sl letters &kp DOLLAR &kp LPAR         mo_SLASH      mo_PLUS   &kp COLON   &kp DOUBLE_QUOTES
+        &to capslock_l   &kp SEMI    &kp LESS_THAN  &kp GREATER_THAN  &kp CARET      &kp RPAR                      &none   &none        &none  &none  &none   &none  &none   &none                     &kp PIPE   &kp HASH         &kp COMMA     &kp DOT   &kp UNDER   &none
+        &none            &none       &none          &kp LC(RIGHT)     &sl arrowA                                 mo_SPACE2 &m_to0_space &none                 &kp DEL &to 0  &m_to0_enter                         &none            &kp LC(RIGHT) &none     &none       &none 
       >;
     };  
 
