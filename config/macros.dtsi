@@ -348,6 +348,18 @@ m_charA_shift: m_to_charsA_shift {
                 ;
       };
 
+      m_toNrCh_star2: m_to_number_char_star2 {
+            label = "m_to_number_char_star2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <5>;
+            tap-ms = <10>;
+            bindings
+                = <&to chars_number>
+                , <&macro_tap &kp DOT &kp STAR>
+                ;
+      };
+
    m_toNrCh_plus: m_to_number_char_plus {
             label = "m_to_number_char_plus";
             compatible = "zmk,behavior-macro";

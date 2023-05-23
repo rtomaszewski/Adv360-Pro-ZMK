@@ -431,6 +431,14 @@ td_qoute_Lm: tap_dance_char_number_qoute {
             bindings = <&m_toNrCh_minus>, <&m_toNrCh_r_minus>;
         }; 
 
+    td_star_dot: tap_dance_char_num_star_dot {
+            label = "tap_dance_char_num_star_dot";
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&m_toNrCh_star>, <&m_toNrCh_star2>;
+        }; 
+
 
 // --------------------------------------------------------
 
@@ -788,6 +796,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 // layer used to type "wired" char sequences that are "unergonomic" otherwise
 // \= @tile
 // "#{@item.type}
+// - typing '.*' requires right hand to jump from the bottom to top row; added the '*' char in the "alt" key spot
 
     chars_split_layer {
       bindings = <
@@ -795,7 +804,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
         &none            &kp QMARK         &kp GRAVE         &kp BACKSLASH     &kp PERCENT       &kp RIGHT_BRACKET &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp DEL
         &kp SINGLE_QUOTE &to 0             &kp AMPERSAND     &kp TILDE         &kp LEFT_BRACE    &kp RIGHT_BRACE   &sl letters         &kp ENTER   &none                 &none   &kp T              &sl letters &kp DOLLAR  &kp LPAR         mo_SLASH          mo_PLUS          &kp COLON       &kp DOUBLE_QUOTES
         &to capslock_l   &kp LC(RIGHT)     &kp LESS_THAN     &kp GREATER_THAN  &kp CARET         &kp RPAR                    &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &kp COMMA         &kp DOT          &kp UNDER       &none
-        &none            &none             &none             &none             &sl arrowA                               mo_SPACE2     &m_to0_space &none                 &kp DEL &sl letters &m_to0_enter                   to_ChNr          &none             &none            &none           &none 
+        &none            &none             &none             &none             &sl arrowA                               mo_SPACE2     &m_to0_space &none                 &kp DEL &sl letters &m_to0_enter                   to_ChNr          &kp STAR          &none            &none           &none 
       >;
     };  
 
@@ -821,15 +830,16 @@ td_qoute_Lm: tap_dance_char_number_qoute {
 // x  : <|>
 // space: alt+right, space, L_Nr
 // enter: alt+right, space, L_0
+// *    : .*, L_Nr
 //
 //TODO:
 //  '<end> ', example: "string|" -> "string" |
 
    chars_number_m_layer {
       bindings = <
-        &none            &none             &none             &none             to_arrow          &none         &none                                                                              &kp CARET   &kp PERCENT &kp LEFT_BRACE   &m_toNrCh_star    &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
+        &none            &none             &none             &none             to_arrow          &none         &none                                                                              &kp CARET   &kp PERCENT &kp LEFT_BRACE   &td_star_dot      &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &m_N9             &m_N8             &m_N7             &m_toNrCh_t &none                                                                                &none       &kp AT      &kp LEFT_BRACKET &td_minus_r       &td_equals       &kp EXCL        &kp GRAVE
-        &key_repeat      &kp UNDER         &m_N6             &m_N5_d           &m_N4             &m_N0         &sl letters         &kp ENTER   &none                 &none   &kp M                &sl letters &kp DOLLAR  &m_toNrCh_lpar   &m_toNrCh_slash   &m_toNrCh_plus   &td_colon_Lm    &td_qoute_Lm
+        &key_repeat      &to 0             &m_N6             &m_N5_d           &m_N4             &m_N0         &sl letters         &kp ENTER   &none                 &none   &kp M                &sl letters &kp DOLLAR  &m_toNrCh_lpar   &m_toNrCh_slash   &m_toNrCh_plus   &td_colon_Lm    &td_qoute_Lm
         &sl letters_cap  &m_N2            &m_toNrCh_diamond  &m_N2             &m_N1             &kp DOT                 &none     &none       &none  &none  &none   &none   &none    &none                &m_toNrCh_pipe &kp HASH         &td_less          &td_more         &td_under       &sl letters_cap
         &none            &none             &none             &none             &sl arrowA                        &m_toNrCh_space   &sl letters &none              &kp DEL &sl letters &m_toNrCh_enter_space               &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
@@ -845,7 +855,7 @@ td_qoute_Lm: tap_dance_char_number_qoute {
       bindings = <
         &none            &none             &none             &kp SPACE         to_arrow          &none         &none                                                                              &kp CARET &kp PERCENT &kp LEFT_BRACE   &kp STAR          &kp AMPERSAND    &kp RIGHT_BRACE &kp BSPC
         &none            &to 0             &kp N9            &kp N8            &kp N7            &kp LC(RIGHT) &none                                                                              &none     &kp AT      &kp LEFT_BRACKET &kp MINUS         &kp EQUAL        &kp EXCL        &kp GRAVE
-        &kp TAB          &kp UNDER         &none             &kp BACKSLASH     &kp CARET         &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp R              &sl letters &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &td_colon       &td_qoute
+        &kp TAB          &to 0             &none             &kp BACKSLASH     &kp CARET         &kp N0        &sl letters         &kp ENTER   &none                 &none   &kp R              &sl letters &kp DOLLAR  &kp LPAR         &kp SLASH         &kp PLUS         &td_colon       &td_qoute
         &sl letters_cap  &kp COMMA         &kp N3            &kp N2            &kp N1            &key_repeat             &none     &none       &none  &none  &none   &none   &none    &none                 &kp PIPE    &kp HASH         &m_comma_c        &td_dot          &td_under       &sl letters_cap
         &none            &none             &none             &none             &sl arrowA                     &m_toNrCh_space_c    &sl letters &none                 &kp DEL &sl letters &m_toNrCh_enter_space_c        &kp RPAR         &kp RIGHT_BRACKET &none            &kp TILDE       &kp BACKSLASH
       >;
